@@ -170,10 +170,44 @@
   justify-content: space-between;
   gap: 12px;
 }
-.list-sub {
-  margin: 0;
-  font-size: 12px;
+.help {
+  
+  font-size: 10px;
+  font-weight: 600;
   color: var(--muted2);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    
+    right: 88.5%;
+    top: 4px;
+}
+
+.help .tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  padding: 8px 12px;
+
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.help:hover .tooltip,
+.help:focus-visible .tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 .kanban {
