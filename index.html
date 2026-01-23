@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusFlow - Todo Dashboard</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- 헤더 -->
+      <header class="top">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">F</div>
+          <div class="brand-text">
+            <h1 class="brand-title">FocusFlow</h1>
+            <p class="brand-sub">
+              작업을 더 선명하게, 오늘의 흐름을 관리하세요
+            </p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="greeting-wrap">
+            <p id="greeting" class="greeting">안녕하세요, 사용자님</p>
+            <p class="hint">닉네임/테마/할 일은 새로고침해도 유지됩니다.</p>
+          </div>
+
+          <div class="controls-inline">
+            <button
+              id="nickname-btn"
+              class="btn ghost"
+              type="button"
+              aria-label="닉네임 변경"
+            >
+              <span class="icon" aria-hidden="true">✏️</span>
+              <span class="btn-text">닉네임</span>
+            </button>
+
+            <button
+              id="theme-toggle"
+              class="btn ghost"
+              type="button"
+              aria-label="테마 토글"
+            >
+              <span class="icon" aria-hidden="true">🌓</span>
+              <span class="btn-text">Theme</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- 상단 2열 -->
+      <section class="grid">
+        <!-- 통계 수치 -->
+        <article class="card hero" aria-label="오늘의 대시보드">
+          <div class="hero-head">
+            <h2 class="section-title">오늘의 대시보드</h2>
+            <span class="pill" id="today-pill">Today</span>
+          </div>
+
+          <div class="progress" aria-label="달성률 진행바">
+            <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+          </div>
+
+          <div class="stat-chips" aria-label="우선순위 통계">
+            <div class="chip">
+              <span class="chip-k">높음</span
+              ><span id="pri-high" class="chip-v">0</span>
+            </div>
+            <div class="chip">
+              <span class="chip-k">중간</span
+              ><span id="pri-mid" class="chip-v">0</span>
+            </div>
+            <div class="chip">
+              <span class="chip-k">낮음</span
+              ><span id="pri-low" class="chip-v">0</span>
+            </div>
+          </div>
+
+          <div class="mini-cards" aria-label="상태별 개수">
+            <div class="mini">
+              <p class="mini-label">전체</p>
+              <p id="count-total" class="mini-value">0</p>
+            </div>
+            <div class="mini">
+              <p class="mini-label">시작 전</p>
+              <p id="count-todo" class="mini-value">0</p>
+            </div>
+            <div class="mini">
+              <p class="mini-label">진행중</p>
+              <p id="count-doing" class="mini-value">0</p>
+            </div>
+            <div class="mini">
+              <p class="mini-label">완료</p>
+              <p id="count-done" class="mini-value">0</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 검색 필터 -->
+        <article class="card filters" aria-label="검색 필터 정렬">
+          <h2 class="section-title">검색 / 필터 / 정렬</h2>
+
+          <div class="filter-grid">
+            <label class="field">
+              <span class="label">검색(제목)</span>
+              <input
+                id="search"
+                type="text"
+                placeholder="예: 과제, 회의, 운동..."
+              />
+            </label>
+
+            <label class="field">
+              <span class="label">기간</span>
+              <select id="period" aria-label="기간 필터">
+                <option value="all">전체</option>
+                <option value="today">오늘</option>
+                <option value="week">최근 7일</option>
+                <option value="month">최근 30일</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="label">상태</span>
+              <select id="filter" aria-label="상태 필터">
+                <option value="all">전체</option>
+                <option value="todo">시작 전</option>
+                <option value="doing">진행중</option>
+                <option value="done">완료</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="label">정렬</span>
+              <select id="sort" aria-label="정렬">
+                <option value="latest">최신순</option>
+                <option value="oldest">오래된순</option>
+                <option value="priority">우선순위순</option>
+                <option value="status">상태순</option>
+              </select>
+            </label>
+          </div>
+
+          <p class="small-note">적용 순서: <b>검색 → 기간 → 상태 → 정렬</b></p>
+        </article>
+      </section>
+
+      <!-- 할 일 추가 -->
+      <section class="work work-form">
+        <article class="card composer" aria-label="할 일 추가">
+          <h2 class="section-title">할 일 추가</h2>
+
+          <div class="composer-grid">
+            <label class="field title">
+              <span class="label">제목(필수)</span>
+              <input
+                id="todo-input"
+                type="text"
+                placeholder="제목만 입력해도 됩니다"
+              />
+            </label>
+
+            <label class="field priority">
+              <span class="label">우선순위</span>
+              <select id="priority" aria-label="우선순위 선택">
+                <option value="high">높음</option>
+                <option value="mid" selected>중간</option>
+                <option value="low">낮음</option>
+              </select>
+            </label>
+
+            <button
+              id="add-btn"
+              class="btn primary add"
+              type="button"
+              aria-label="할 일 추가"
+            >
+              추가
+            </button>
+
+            <label class="field due">
+              <span class="label">마감일</span>
+              <input id="due-date" type="date" aria-label="마감일 선택" />
+            </label>
+
+            <label class="field content">
+              <span class="label">내용(옵션)</span>
+              <textarea
+                id="content"
+                rows="3"
+                placeholder="상세 내용을 적어도 되고 비워도 됩니다."
+              ></textarea>
+            </label>
+
+            <div class="composer-actions">
+              <button id="clear-btn" class="btn danger" type="button">
+                전체 삭제
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 할 일 목록 추가하는 곳 -->
+      <section class="work work-board">
+        <article class="card list" aria-label="TODO BOARD">
+          <div class="list-head">
+            <h2 class="section-title">TODO BOARD</h2>
+            <p class="list-sub">
+              시작 전 / 진행중 / 완료로 분리됩니다. 카드에서 상태를 변경할 수
+              있습니다.
+            </p>
+          </div>
+
+          <div class="kanban">
+            <section class="lane">
+              <div class="lane-head">
+                <h3 class="lane-title">시작 전</h3>
+                <span id="lane-count-todo" class="lane-count">0</span>
+              </div>
+              <ul id="list-todo" class="todo-list" aria-label="할 일 목록"></ul>
+            </section>
+
+            <section class="lane">
+              <div class="lane-head">
+                <h3 class="lane-title">진행중</h3>
+                <span id="lane-count-doing" class="lane-count">0</span>
+              </div>
+              <ul
+                id="list-doing"
+                class="todo-list"
+                aria-label="진행중 목록"
+              ></ul>
+            </section>
+
+            <section class="lane">
+              <div class="lane-head">
+                <h3 class="lane-title">완료</h3>
+                <span id="lane-count-done" class="lane-count">0</span>
+              </div>
+              <ul id="list-done" class="todo-list" aria-label="완료 목록"></ul>
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <p>© FocusFlow Team Project</p>
+      </footer>
+    </div>
+
+    <!-- 삭제한다고 했을 때 모달 -->
+    <div
+      id="modal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="modal-card">
+        <h3 class="modal-title">삭제 확인</h3>
+        <p id="modal-msg" class="modal-msg">정말 삭제할까요?</p>
+        <div class="modal-actions">
+          <button id="modal-cancel" class="btn ghost" type="button">
+            취소
+          </button>
+          <button id="modal-ok" class="btn danger" type="button">삭제</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 닉네임 설정 모달 -->
+    <div
+      id="name-modal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="modal-card">
+        <h3 class="modal-title">닉네임 설정</h3>
+        <p class="modal-msg">표시할 닉네임을 입력해 주세요.</p>
+
+        <label class="field">
+          <span class="label">닉네임</span>
+          <input id="name-input" type="text" placeholder="예: simple" />
+        </label>
+
+        <div class="modal-actions">
+          <button id="name-save" class="btn primary" type="button">저장</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
