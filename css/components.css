@@ -185,7 +185,8 @@
 .help .tooltip {
   position: absolute;
   padding: 8px 12px;
-
+    top: calc(100% + 8px);
+  right: calc(100% - 130px);
   background: #222;
   color: #fff;
   font-size: 12px;
