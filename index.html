@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FocusFlow - Todo Dashboard</title>
 
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/layout.css" />
-    <link rel="stylesheet" href="./css/components.css" />
-    <link rel="stylesheet" href="./css/modal.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/modal.css" />
   </head>
 
   <body>
@@ -183,7 +183,10 @@
 
             <label class="field due">
               <span class="label">마감일</span>
-              <input id="due-date" type="date" aria-label="마감일 선택" />
+              <input id="due-date" type="date" 
+                  min="1900-01-01"
+                  max="2099-12-31"  
+                  aria-label="마감일 선택" />
             </label>
 
             <label class="field content">
