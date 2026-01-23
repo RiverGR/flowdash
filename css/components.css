@@ -32,7 +32,7 @@
   color: var(--text);
 }
 
-/* 대시보드 진행바(두꺼운 선 제거) */
+/* 대시보드 진행도를 나타내는 바 */
 .progress {
   margin-top: 10px;
   height: 10px;
@@ -124,7 +124,7 @@
   }
 }
 
-/* Composer 접근성(버튼 배치 개선) */
+/* 접근성(버튼 배치 개선) */
 .composer {
   padding: 16px;
 }
@@ -160,7 +160,7 @@
   }
 }
 
-/* Board */
+/* 보드 영역 */
 .list {
   padding: 16px;
 }
@@ -171,18 +171,17 @@
   gap: 12px;
 }
 .help {
-  
   font-size: 10px;
   font-weight: 600;
   color: var(--muted2);
 
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    
-    right: 88.5%;
-    top: 4px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  right: 88.5%;
+  top: 4px;
 }
 
 .help .tooltip {
@@ -262,7 +261,7 @@
   gap: 10px;
 }
 
-/* ✅ 카드: 보기 모드(기본) */
+/* 카드 영역 */
 .todo-card {
   position: relative;
   border-radius: 16px;
@@ -382,7 +381,7 @@ html[data-theme="light"] .empty {
   line-height: 1;
 }
 
-/* 완료 카드 스타일(취소선 + 카드 변화) */
+/* 완료 카드 스타일 */
 .todo-card.is-done {
   border-left: 4px solid rgba(74, 222, 128, 0.95);
   background: linear-gradient(
@@ -406,7 +405,7 @@ html[data-theme="light"] .empty {
   color: var(--muted);
 }
 
-/* 2열 카드 높이 맞춤 */
+/* 2열 카드 높이 맞추기 */
 .grid > .card {
   height: 100%;
   display: flex;

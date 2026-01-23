@@ -52,7 +52,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ✅ 배경(테마에 따라 자동 변경됨) */
+/*  배경(테마에 따라 자동 변경) */
 html::before {
   content: "";
   position: fixed;
@@ -100,7 +100,7 @@ html[data-theme="light"]::before {
     linear-gradient(160deg, var(--bg), var(--bg2));
 }
 
-/* 밴딩 완화 노이즈 */
+/* 밴딩 */
 body::before {
   content: "";
   position: fixed;
