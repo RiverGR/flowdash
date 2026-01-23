@@ -166,9 +166,8 @@
 }
 .list-head {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: row;
+  gap: 7px;
 }
 .help {
   font-size: 10px;
@@ -180,8 +179,7 @@
   align-items: center;
   cursor: pointer;
 
-  right: 88.5%;
-  top: 4px;
+  bottom: 4px;
 }
 
 .help .tooltip {
