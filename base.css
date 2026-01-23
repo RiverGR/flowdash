@@ -1,0 +1,241 @@
+:root {
+  --bg: #0b1220;
+  --bg2: #0e1730;
+
+  --card: rgba(255, 255, 255, 0.08);
+  --card-strong: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.14);
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.68);
+  --muted2: rgba(255, 255, 255, 0.56);
+
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+  --radius: 18px;
+
+  --danger: #ef4444;
+  --focus: 0 0 0 3px rgba(56, 189, 248, 0.25);
+
+  --sans:
+    ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+}
+
+html[data-theme="light"] {
+  --bg: #f6f7ff;
+  --bg2: #eef2ff;
+
+  --card: rgba(255, 255, 255, 0.76);
+  --card-strong: rgba(255, 255, 255, 0.92);
+  --border: rgba(15, 23, 42, 0.12);
+
+  --text: rgba(15, 23, 42, 0.92);
+  --muted: rgba(15, 23, 42, 0.68);
+  --muted2: rgba(15, 23, 42, 0.56);
+
+  --shadow: 0 16px 44px rgba(15, 23, 42, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ✅ 배경(테마에 따라 자동 변경됨) */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+  background:
+    radial-gradient(
+      1200px 700px at 18% 12%,
+      rgba(124, 58, 237, 0.34),
+      transparent 62%
+    ),
+    radial-gradient(
+      1050px 650px at 86% 16%,
+      rgba(6, 182, 212, 0.24),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 650px at 60% 92%,
+      rgba(34, 197, 94, 0.16),
+      transparent 62%
+    ),
+    linear-gradient(160deg, var(--bg), var(--bg2));
+}
+
+html[data-theme="light"]::before {
+  background:
+    radial-gradient(
+      1200px 720px at 18% 14%,
+      rgba(124, 58, 237, 0.18),
+      transparent 62%
+    ),
+    radial-gradient(
+      1050px 680px at 86% 16%,
+      rgba(6, 182, 212, 0.14),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 650px at 58% 92%,
+      rgba(34, 197, 94, 0.1),
+      transparent 62%
+    ),
+    linear-gradient(160deg, var(--bg), var(--bg2));
+}
+
+/* 밴딩 완화 노이즈 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+}
+
+/* 오브 */
+.bg-orb {
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  filter: blur(44px);
+  opacity: 0.55;
+  z-index: -1;
+  border-radius: 999px;
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+}
+.orb-1 {
+  top: -160px;
+  left: -160px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(124, 58, 237, 0.82),
+    transparent 56%
+  );
+}
+.orb-2 {
+  bottom: -210px;
+  right: -210px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(6, 182, 212, 0.74),
+    transparent 56%
+  );
+}
+
+/* 기본 폼 */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+.label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  line-height: 1.25;
+}
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+body {
+  color-scheme: dark;
+}
+html[data-theme="light"] body {
+  color-scheme: light;
+}
+
+option {
+  background: #0f172a;
+  color: rgba(255, 255, 255, 0.92);
+}
+html[data-theme="light"] option {
+  background: #fff;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+/* 버튼 */
+.btn {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 120ms ease,
+    filter 120ms ease,
+    background 120ms ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.primary {
+  border: none;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.95),
+    rgba(6, 182, 212, 0.85)
+  );
+}
+.btn.danger {
+  border: none;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.95),
+    rgba(249, 115, 22, 0.85)
+  );
+}
+.btn.ghost {
+  background: transparent;
+}
