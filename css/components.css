@@ -180,14 +180,41 @@
   gap: 12px;
 }
 
+.help {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted2);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  top: 1px;
+  
+}
+
 .help .tooltip {
   position: absolute;
+  top: calc(100% + 8px);
+  right: calc(100% + 8px);
   padding: 8px 12px;
 
   background: #222;
   color: #fff;
   font-size: 12px;
-  color: var(--muted2);
+  border-radius: 6px;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.help:hover .tooltip,
+.help:focus-visible .tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 .kanban {
