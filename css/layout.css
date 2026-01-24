@@ -52,24 +52,72 @@
 }
 
 .top-actions {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   justify-items: end;
+}
+
+.greeting-wrap {
+  display: flex;
+  align-items: center;
+  gap : 10px;
+  
+
 }
 .greeting {
   margin: 0;
   font-weight: 900;
   letter-spacing: -0.01em;
+  
+
+  
 }
-.hint {
-  margin: 4px 0 0;
-  font-size: 12px;
+
+.help-user {
+  font-size: 10px;
+  font-weight: 600;
   color: var(--muted2);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  top: 1px;
+  
 }
+
+.help-user .tooltip-user {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: calc(100% + 8px);
+  padding: 8px 12px;
+
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.help-user:hover .tooltip-user,
+.help-user:focus-visible .tooltip-user {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .controls-inline {
   display: flex;
+  justify-content: end;
+  right: 30px;
   gap: 10px;
-  align-items: end;
+  
 }
 
 .grid {
@@ -100,6 +148,13 @@
 }
 
 @media (max-width: 980px) {
+
+  .help-user .tooltip-user {
+    top: calc(100% + 8px);
+    right: calc(100% - 130px);
+  }
+
+
   .top {
     flex-direction: column;
     align-items: stretch;
