@@ -180,25 +180,12 @@
   gap: 12px;
 }
 
-<<<<<<< HEAD
-.list-head #clear-btn {
-  width: auto; /* 기존 100% 풀폭 방지 */
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-}
-
-.list-sub {
-  margin: 0;
-=======
 .help .tooltip {
   position: absolute;
   padding: 8px 12px;
-    top: calc(100% + 8px);
-  right: calc(100% - 130px);
+
   background: #222;
   color: #fff;
->>>>>>> e01e161774014993adf1dfe3b579d9d1bc0101c7
   font-size: 12px;
   color: var(--muted2);
 }
