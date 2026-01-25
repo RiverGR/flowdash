@@ -8,7 +8,7 @@
 
 .section-title {
   margin: 0 0 12px;
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: -0.01em;
   color: var(--muted);
   text-transform: uppercase;
@@ -147,7 +147,7 @@
 }
 
 .composer .title-main {
-  font-size: 20px;
+  font-size: 186x;
   font-weight: 800;
   color: var(--text);
   text-transform: none;
