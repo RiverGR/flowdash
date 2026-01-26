@@ -38,7 +38,7 @@ export const createHeader = ({ onAfterThemeToggle } = {}) => {
     return "좋은 저녁이에요";
   };
  
-
+  
   // 닉네임 관련 수정 및 입력 로직
   const renderGreeting = () => {
     if (!greetingEl || editing) return;
@@ -137,3 +137,5 @@ export const createHeader = ({ onAfterThemeToggle } = {}) => {
 
   return { bind, renderGreeting };
 };
+
+// 헤더 완료
