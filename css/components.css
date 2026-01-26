@@ -146,13 +146,11 @@
   height: 42px;
 }
 
-.composer-actions  {
+.composer-actions {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
-
 }
-
 
 .composer .title-main {
   font-size: 186x;
@@ -198,7 +196,6 @@
   align-items: center;
   cursor: pointer;
   top: 1px;
-  
 }
 
 .help .tooltip {
@@ -302,7 +299,7 @@
 .badges {
   display: inline-flex;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-top: 8px;
 }
 .badge {
@@ -313,6 +310,7 @@
   font-size: 12px;
   font-weight: 900;
   color: var(--text);
+  margin-left: 5px;
 }
 .badge.muted {
   color: var(--muted);
