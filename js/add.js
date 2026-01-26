@@ -1,5 +1,5 @@
 // 할 일 추가 카드(입력 -> 추가, 전체 삭제 버튼)
-export const creatAdder = ({ onAdd, onClearAll } = {}) => {
+export const createAdder = ({ onAdd, onClearAll } = {}) => {
   const $ = (sel) => document.querySelector(sel);
 
   const inputTitle = $("#todo-input");
@@ -8,6 +8,7 @@ export const creatAdder = ({ onAdd, onClearAll } = {}) => {
   const inputDue = $("#due-date");
   const btnAdd = $("#add-btn");
   const btnClear = $("#clear-btn");
+
   // 데이터 수집
   const collect = () => ({
     title: (inputTitle?.value ?? "").trim(),
@@ -15,6 +16,7 @@ export const creatAdder = ({ onAdd, onClearAll } = {}) => {
     priority: inputPriority?.value ?? "mid",
     dueDate: (inputDue?.value ?? "") || null,
   });
+
   // 입력 필드 초기화
   const reset = () => {
     if (inputTitle) inputTitle.value = "";
@@ -22,6 +24,7 @@ export const creatAdder = ({ onAdd, onClearAll } = {}) => {
     if (inputPriority) inputPriority.value = "mid";
     if (inputDue) inputDue.value = "";
   };
+
   // 제출 처리
   const submit = () => {
     const data = collect();

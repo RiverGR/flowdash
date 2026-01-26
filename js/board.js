@@ -1,4 +1,4 @@
-import { createHeader } from "./Header.js";
+import { createHeader } from "./header.js";
 import { createDashboard } from "./dash.js";
 import { createFilter } from "./filter.js";
 import { createAdder } from "./add.js";

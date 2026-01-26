@@ -14,6 +14,7 @@ export const creatDashboard = () => {
   const countTodo = $("#count-todo");
   const countDoing = $("#count-doing");
   const countDone = $("#count-done");
+
   // 날짜 포맷터
   const pad2 = (n) => String(n).padStart(2, "0");
 
