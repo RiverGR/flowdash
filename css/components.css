@@ -146,6 +146,14 @@
   height: 42px;
 }
 
+.composer-actions  {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+
+}
+
+
 .composer .title-main {
   font-size: 186x;
   font-weight: 800;
