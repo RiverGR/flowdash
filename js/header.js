@@ -15,31 +15,25 @@ export const createHeader = ({ onAfterThemeToggle } = {}) => {
     localStorage.setItem(KEY_THEME, theme);
     document.documentElement.dataset.theme = theme;
   };
-  
-  // 다크모드 라이트모드 로직
+
   const toggleTheme = () => setTheme(getTheme() === "dark" ? "light" : "dark");
 
   const getName = () => localStorage.getItem(KEY_NAME) || "사용자";
   const setName = (name) => localStorage.setItem(KEY_NAME, name);
 
-  // 닉네임 랜덤 돌리고 조합시키기
   const randomNickname = () => {
     const a = ["푸른", "따뜻한", "빠른", "조용한", "빛나는", "멋진"];
     const b = ["여우", "고양이", "토끼", "곰", "호랑이", "돌고래"];
     return a[Math.floor(Math.random() * a.length)] + b[Math.floor(Math.random() * b.length)];
   };
 
-
-  // 시간대별로 인사말 변경하기
   const getGreetingText = () => {
     const h = new Date().getHours();
     if (h >= 5 && h < 12) return "좋은 아침이에요";
     if (h >= 12 && h < 18) return "좋은 오후에요";
     return "좋은 저녁이에요";
   };
- 
-  
-  // 닉네임 관련 수정 및 입력 로직
+
   const renderGreeting = () => {
     if (!greetingEl || editing) return;
 
@@ -137,5 +131,3 @@ export const createHeader = ({ onAfterThemeToggle } = {}) => {
 
   return { bind, renderGreeting };
 };
-
-// 헤더 완료
