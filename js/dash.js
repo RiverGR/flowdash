@@ -1,5 +1,5 @@
 // 대시보드 카드(Today, 달성률, 통계)
-export const creatDashboard = () => {
+export const createDashboard = () => {
   const $ = (sel) => document.querySelector(sel);
 
   const todayPill = $("#today-pill");

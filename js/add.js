@@ -1,5 +1,5 @@
 // 할 일 추가 카드(입력 -> 추가, 전체 삭제 버튼)
-export const creatAdder = ({ onAdd, onClearAll } = {}) => {
+export const createAdder = ({ onAdd, onClearAll } = {}) => {
   const $ = (sel) => document.querySelector(sel);
 
   const inputTitle = $("#todo-input");
@@ -37,7 +37,7 @@ export const creatAdder = ({ onAdd, onClearAll } = {}) => {
 
   const bind = () => {
     // 추가 버튼 클릭 이벤트
-    btnAdd?.addEventListener("click", submit());
+    btnAdd?.addEventListener("click", submit);      
     // 엔터 키 입력 이벤트
     inputTitle?.addEventListener("keydown", (e) => {
       if (e.key === "Enter") submit();
