@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FocusFlow - Todo Dashboard</title>
 
+    <script>
+      // 초기 렌더링 전에 접힘 상태를 먼저 적용해서 깜빡임(펼쳐졌다가 접힘)을 방지
+      (function () {
+        try {
+          document.documentElement.classList.add("preload");
+          const v = localStorage.getItem("flowdash-composer-collapsed");
+          if (v === "1")
+            document.documentElement.classList.add("composer-collapsed");
+        } catch (e) {}
+      })();
+    </script>
+
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/layout.css" />
     <link rel="stylesheet" href="./css/components.css" />
@@ -47,7 +59,7 @@
                 />
               </svg>
               <span class="tooltip-user">
-                닉네임/테마/할 일은 새로고침해도 유지됩니다.
+                닉네임 / 테마 / 할 일은 새로고침해도 유지됩니다.
               </span>
             </span>
           </div>
@@ -171,49 +183,76 @@
       <!-- 할 일 추가 -->
       <section class="work work-form">
         <article class="card composer" aria-label="할 일 추가">
-          <h2 class="section-title title-main">할 일 추가</h2>
-
-          <div class="composer-grid">
-            <label class="field title">
-              <span class="label">제목(필수)</span>
-              <input
-                id="todo-input"
-                type="text"
-                placeholder="제목만 입력해도 됩니다"
-              />
-            </label>
-
-            <label class="field priority">
-              <span class="label">우선순위</span>
-              <select id="priority" aria-label="우선순위 선택">
-                <option value="high">높음</option>
-                <option value="mid" selected>중간</option>
-                <option value="low">낮음</option>
-              </select>
-            </label>
-
+          <div class="composer-head">
+            <h2 class="section-title title-main">할 일 추가</h2>
             <button
-              id="add-btn"
-              class="btn primary add"
+              id="composer-toggle"
+              class="btn ghost composer-toggle"
               type="button"
-              aria-label="할 일 추가"
+              aria-label="할 일 추가 접기/펼치기"
+              aria-expanded="true"
+              aria-controls="composer-body"
             >
-              추가
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
             </button>
+          </div>
 
-            <label class="field due">
-              <span class="label">마감일</span>
-              <input id="due-date" type="date" mix="1900-01-31" max="2100-12-31" aria-label="마감일 선택" />
-            </label>
+          <div id="composer-body" class="composer-body">
+            <div class="composer-grid">
+              <label class="field title">
+                <span class="label">제목(필수)</span>
+                <input
+                  id="todo-input"
+                  type="text"
+                  placeholder="제목만 입력해도 됩니다"
+                />
+              </label>
 
-            <label class="field content">
-              <span class="label">내용(옵션)</span>
-              <textarea
-                id="content"
-                rows="3"
-                placeholder="상세 내용을 적어도 되고 비워도 됩니다."
-              ></textarea>
-            </label>
+              <label class="field priority">
+                <span class="label">우선순위</span>
+                <select id="priority" aria-label="우선순위 선택">
+                  <option value="high">높음</option>
+                  <option value="mid" selected>중간</option>
+                  <option value="low">낮음</option>
+                </select>
+              </label>
+
+              <button
+                id="add-btn"
+                class="btn primary add"
+                type="button"
+                aria-label="할 일 추가"
+              >
+                추가
+              </button>
+
+              <label class="field due">
+                <span class="label">마감일</span>
+                <input id="due-date" type="date" aria-label="마감일 선택" />
+              </label>
+
+              <label class="field content">
+                <span class="label">내용(옵션)</span>
+                <textarea
+                  id="content"
+                  rows="3"
+                  placeholder="상세 내용을 적어도 되고 비워도 됩니다."
+                ></textarea>
+              </label>
+            </div>
           </div>
         </article>
       </section>

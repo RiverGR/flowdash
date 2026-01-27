@@ -515,7 +515,7 @@ html[data-theme="light"] .empty {
   text-overflow: ellipsis;
 }
 
-/* 배지 영역 자체 높이 고정 (핵심) */
+/* 배지 영역 자체 높이 고정 */
 .todo-card .badges {
   min-height: 28px;
   align-items: center;
@@ -523,4 +523,59 @@ html[data-theme="light"] .empty {
 
 #body {
   resize: none;
+}
+
+/* 할 일 추가 카드 접기/펼치기 */
+.composer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.composer-toggle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.composer-body {
+  overflow: hidden;
+  max-height: 1200px;
+  opacity: 1;
+  transition:
+    max-height 220ms ease,
+    opacity 180ms ease;
+}
+
+.composer.collapsed .composer-body {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.composer-toggle svg {
+  transition: transform 180ms ease;
+}
+
+.composer.collapsed .composer-toggle svg {
+  transform: rotate(-180deg);
+}
+
+/* 새로고침 시 깜빡임 방지: html 클래스만으로도 접힘 상태를 즉시 적용 */
+html.composer-collapsed .composer-body {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+html.composer-collapsed .composer-toggle svg {
+  transform: rotate(-180deg);
+}
+
+/* 초기 로딩 중에는 전환 애니메이션을 끄기 */
+html.preload .composer-body,
+html.preload .composer-toggle svg {
+  transition: none !important;
 }
