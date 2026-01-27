@@ -259,7 +259,6 @@ html[data-theme="light"] option {
 }
 .btn.ghost {
   background: transparent;
-  
 }
 
 html {
@@ -269,16 +268,16 @@ html {
 /*마감 일정 알림*/
 /* 마감일이 지남 */
 
-.list-head{
+.list-head {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.list-head .due-alert{
-  margin-right: auto; /* ✅ 가운데(오른쪽)로 밀기 */
+.list-head .due-alert {
+  margin-right: auto; /* 가운데(오른쪽)로 밀기 */
 }
 
-.due-out{
+.due-out {
   color: red;
   font-weight: bold;
 }
@@ -292,4 +291,3 @@ html {
   color: green;
   font-weight: bold;
 }
-

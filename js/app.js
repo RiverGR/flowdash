@@ -96,7 +96,7 @@ const renderDueAlert = (todos) => {
     return;
   }
 
-  el.textContent = `가장 임박한 마감: ${top.left}일 남음 ("${top.title}")`;
+  el.textContent = `빠르게 완료해야 할 일: ${top.left}일 남음 ("${top.title}")`;
   el.className = "due-alert";
 };
 
@@ -115,7 +115,10 @@ const createConfirmModal = () => {
   const open = (type, id = null) => {
     pending = { type, id };
     if (dom.msg)
-      dom.msg.textContent = type === "all" ? "정말 삭제하시겠습니까? 초기화 후엔 되돌릴 수 없습니다." : "삭제할까요?";
+      dom.msg.textContent =
+        type === "all"
+          ? "정말 삭제하시겠습니까? 초기화 후엔 되돌릴 수 없습니다."
+          : "삭제할까요?";
     dom.modal?.classList.remove("hidden");
   };
 
@@ -175,7 +178,7 @@ const createBoard = () => {
     titleInput.value = todo.title ?? "";
     titleInput.maxLength = 80;
     titleInput.placeholder = "제목 입력";
-    
+
     titleField.append(titleInput);
 
     const row = el("div", { className: "filter-grid" });
@@ -185,7 +188,7 @@ const createBoard = () => {
     const statusField = el("label", { className: "field" });
     statusField.append(el("span", { className: "label", text: "상태" }));
     statusField.style.marginTop = "10px";
-        const statusSel = buildSelect(
+    const statusSel = buildSelect(
       ["todo", "doing", "done"],
       todo.status,
       STATUS_LABEL,
