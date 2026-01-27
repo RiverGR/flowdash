@@ -127,7 +127,6 @@
 /* Composer 접근성(버튼 배치 개선) */
 .composer {
   padding: 16px;
-  /* margin-bottom: 20px; */
 }
 .composer-grid {
   display: grid;
@@ -275,7 +274,7 @@
   gap: 10px;
 }
 
-/* ✅ 카드: 보기 모드(기본) */
+/* 카드: 보기 모드(기본) */
 .todo-card {
   position: relative;
   border-radius: 16px;
@@ -288,6 +287,7 @@
   gap: 10px;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap; /* 제목이 길면 뱃지가 아래로 내려갈 수 있게 */
 }
 .todo-title {
   margin: 0;
@@ -295,12 +295,31 @@
   font-weight: 950;
   color: var(--text);
   line-height: 1.25;
+
+  flex: 1 1 220px;
+  min-width: 0;
+
+  /* 너무 길면 ... 처리(2줄) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-break: break-word;
 }
+
+.todo-badges {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+  max-width: 100%;
+  justify-content: flex-end;
+}
+
 .badges {
   display: inline-flex;
   gap: 8px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: 8px;
 }
 .badge {
@@ -311,7 +330,7 @@
   font-size: 12px;
   font-weight: 900;
   color: var(--text);
-  margin-left: 5px;
+  margin-left: 0;
 }
 .badge.muted {
   color: var(--muted);
@@ -431,6 +450,71 @@ html[data-theme="light"] .empty {
   align-content: start;
 }
 
-#content{
-   resize: none;
+/* 편집 패널은 세로로 늘어나게(가로 스크롤 방지) */
+.edit-panel .filter-grid {
+  grid-template-columns: 1fr !important;
+}
+.edit-panel .field select,
+.edit-panel .field input[type="date"] {
+  width: 100%;
+  min-width: 0;
+}
+
+/* 완료된 카드 표시 */
+.todo-card.is-done .todo-title {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+.todo-card.is-done {
+  opacity: 0.85;
+}
+
+/* 편집 패널이 오른쪽으로 치우치지 않게 */
+.edit-panel {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.todo-card {
+  overflow: hidden;
+}
+/* select/input이 카드 폭 안에서 줄바꿈되게 */
+.edit-panel .field select,
+.edit-panel .field input,
+.edit-panel textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* 카드 상단 영역을 항상 같은 높이로 맞추기 */
+.todo-card .badges,
+.todo-card .meta,
+.todo-card .chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* 개별 배지 크기 고정 */
+.todo-card .pill,
+.todo-card .chip,
+.todo-card .mini {
+  flex: 0 0 auto;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 배지 영역 자체 높이 고정 (핵심) */
+.todo-card .badges {
+  min-height: 28px;
+  align-items: center;
+}
+
+#body {
+  resize: none;
 }

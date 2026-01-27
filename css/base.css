@@ -52,7 +52,7 @@ body {
   overflow-x: hidden;
 }
 
-/*  배경(테마에 따라 자동 변경) */
+/* 배경(테마에 따라 자동 변경) */
 html::before {
   content: "";
   position: fixed;
@@ -169,7 +169,7 @@ textarea {
   padding: 10px 12px;
   outline: none;
   line-height: 1.25;
-  resize: none; 
+  resize: none;
 }
 html[data-theme="light"] input,
 html[data-theme="light"] select,
@@ -241,15 +241,6 @@ html[data-theme="light"] option {
   background: transparent;
 }
 
-html,
-body,
-.todo-card,
-.todo-top,
-.todo-badges,
-.todo-meta,
-.edit-panel {
-  transition:
-    background-color 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease;
+html {
+  scrollbar-gutter: stable;
 }
