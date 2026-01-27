@@ -141,7 +141,7 @@ const createConfirmModal = () => {
 
 /* 보드(카드 UI) */
 // 밑에 있는 카드 ui는 할 일이 추가된 카드 ui
-// 현 카드 ui는 카드들을 저장하는 큰 하나의 카드들을 의미하니 주의해주세요.
+// 현 카드 ui는 카드들을 저장하는 큰 하나의 카드들을 의미하니 주의.
 const createBoard = () => {
   const laneCountTodo = $("#lane-count-todo");
   const laneCountDoing = $("#lane-count-doing");
@@ -208,7 +208,7 @@ const createBoard = () => {
     const max = new Date();
     max.setFullYear(max.getFullYear() + 1);
     dueInput.max = max.toISOString().slice(0, 10);
-    
+
     dueInput.value = todo.dueDate ?? "";
     dueField.append(dueInput);
 

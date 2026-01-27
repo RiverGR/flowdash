@@ -1,4 +1,3 @@
-import { ensureBoot } from "./entry.js";
 // 할 일 추가 카드(입력 -> 추가, 전체 삭제 버튼)
 export const createAdder = ({ onAdd, onClearAll } = {}) => {
   const $ = (sel) => document.querySelector(sel);

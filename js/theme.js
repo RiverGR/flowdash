@@ -2,10 +2,10 @@
 export const createTheme = ({ themeBtn, onAfterThemeToggle } = {}) => {
   const KEY_THEME = "flowdash-theme";
 
-  // 테마 값 로컬스토리지 저장
+  // 테마 값 로컬스토리지
   const getTheme = () => localStorage.getItem(KEY_THEME) || "dark";
 
-  // 로컬스토리지 저장한 값 불러오기
+  // 로컬스토리지 저장한 값
   const setTheme = (theme) => {
     localStorage.setItem(KEY_THEME, theme);
     document.documentElement.dataset.theme = theme;

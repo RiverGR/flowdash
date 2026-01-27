@@ -3,7 +3,7 @@ export const createNickname = ({ greetingEl, onChange } = {}) => {
   const KEY_NAME = "flowdash-nickname";
   let editing = false;
 
-  // 로컬스토리지 값 저장 및 불러오기
+  // 로컬스토리지 값
   const getName = () => localStorage.getItem(KEY_NAME) || "사용자";
   const setName = (name) => localStorage.setItem(KEY_NAME, name);
 

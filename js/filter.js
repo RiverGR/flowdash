@@ -40,14 +40,6 @@ export const createFilter = ({ onChange } = {}) => {
     return true;
   };
 
-  // 정렬 값(최신 순, 마지막 등록일 순 등등)설정
-  const applyViewToInputs = (view) => {
-    if (search && typeof view.q === "string") search.value = view.q;
-    if (period && view.period) period.value = view.period;
-    if (status && view.status) status.value = view.status;
-    if (sort && view.sort) sort.value = view.sort;
-  };
-
   // 체이닝 메서드로 각각 정렬값을 알맞게 불러오기
   const readViewFromInputs = () => ({
     q: (search?.value ?? "").trim().toLowerCase(),
