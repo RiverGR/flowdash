@@ -16,7 +16,6 @@ export const createAdder = ({ onAdd, onClearAll } = {}) => {
     title: (inputTitle?.value ?? "").trim(),
     content: (inputContent?.value ?? "").trim(),
     priority: inputPriority?.value ?? "mid",
-    startDate: (inputStart?.value ?? "") || null,
     dueDate: (inputDue?.value ?? "") || null,
   });
 
@@ -25,7 +24,6 @@ export const createAdder = ({ onAdd, onClearAll } = {}) => {
     if (inputTitle) inputTitle.value = "";
     if (inputContent) inputContent.value = "";
     if (inputPriority) inputPriority.value = "mid";
-    if (inputStart) inputStart.value = "";
     if (inputDue) inputDue.value = "";
   };
 
