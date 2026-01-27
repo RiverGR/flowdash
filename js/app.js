@@ -202,6 +202,13 @@ const createBoard = () => {
     const dueField = el("label", { className: "field" });
     dueField.append(el("span", { className: "label", text: "마감일" }));
     const dueInput = el("input", { type: "date" });
+
+    dueInput.min = new Date().toISOString().slice(0, 10);
+
+    const max = new Date();
+    max.setFullYear(max.getFullYear() + 1);
+    dueInput.max = max.toISOString().slice(0, 10);
+    
     dueInput.value = todo.dueDate ?? "";
     dueField.append(dueInput);
 
