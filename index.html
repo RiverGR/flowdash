@@ -133,10 +133,13 @@
             <label class="field">
               <span class="label">기간</span>
               <select id="period" aria-label="기간 필터">
-                <option value="all">전체</option>
-                <option value="today">오늘</option>
-                <option value="week">최근 7일</option>
-                <option value="month">최근 30일</option>
+                <option value="all" selected>전체</option>
+                <option value="due_today">오늘 마감</option>
+                <option value="due_3">3일 이내</option>
+                <option value="due_7">7일 이내</option>
+                <option value="due_15">15일 이내</option>
+                <option value="due_16p">16일 이상</option>
+                <option value="overdue">마감 지남</option>
               </select>
             </label>
 
@@ -200,7 +203,7 @@
 
             <label class="field due">
               <span class="label">마감일</span>
-              <input id="due-date" type="date"   min="1900-01-01" max="2100-12-31"aria-label="마감일 선택" />
+              <input id="due-date" type="date" aria-label="마감일 선택" />
             </label>
 
             <label class="field content">
@@ -216,9 +219,11 @@
       </section>
 
       <!-- 할 일 목록 추가하는 곳 -->
+      <section class="work work-board">
         <article class="card list" aria-label="TODO BOARD">
           <div class="list-head">
             <h2 class="section-title">TODO BOARD</h2>
+            <div id="due-alert" class="due-alert" aria-live="polite"></div>
             <span class="help" tabindex="0" aria-label="도움말">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -303,6 +308,5 @@
     </div>
 
     <script type="module" src="./js/entry.js"></script>
-
   </body>
 </html>
