@@ -1,4 +1,3 @@
-import { ensureBoot } from "./entry.js";
 // 검색/필터/정렬 카드
 export const createFilter = ({ onChange } = {}) => {
   const $ = (sel) => document.querySelector(sel);

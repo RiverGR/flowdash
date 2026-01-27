@@ -1,4 +1,3 @@
-import { ensureBoot } from "./entry.js";
 // 대시보드 카드(Today, 달성률, 통계)
 export const createDashboard = () => {
   const $ = (sel) => document.querySelector(sel);
