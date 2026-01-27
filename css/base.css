@@ -158,6 +158,12 @@ body::before {
   color: var(--muted);
 }
 
+.label::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+}
+
 input,
 select,
 textarea {

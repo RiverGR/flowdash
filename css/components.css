@@ -7,11 +7,16 @@
 }
 
 .section-title {
-  margin: 0 0 12px;
   font-size: 16px;
   letter-spacing: -0.01em;
   color: var(--muted);
   text-transform: uppercase;
+}
+
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
 }
 
 .hero {
@@ -107,8 +112,8 @@
 }
 .filter-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 .small-note {
   margin: 10px 0 0;
@@ -118,9 +123,13 @@
 @media (max-width: 980px) {
   .filter-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
   .mini-cards {
     grid-template-columns: 1fr 1fr;
+  }
+  .filters .filter-grid {
+    margin-top: 0 !important;
   }
 }
 
@@ -149,7 +158,7 @@
 .composer-actions {
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 .composer .title-main {
@@ -438,6 +447,11 @@ html[data-theme="light"] .empty {
   font-size: 13px;
   color: var(--muted);
 }
+.rate-text::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+}
 
 /* 2열 카드 높이 맞춤 */
 .grid > .card {
@@ -448,6 +462,7 @@ html[data-theme="light"] .empty {
 .filters .filter-grid {
   flex: 1;
   align-content: start;
+  margin-top: 28px;
 }
 
 /* 편집 패널은 세로로 늘어나게(가로 스크롤 방지) */
