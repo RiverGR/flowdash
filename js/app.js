@@ -245,7 +245,7 @@ const createBoard = () => {
     return wrap;
   };
 
-  // 카드 UI(css로 따로 설정도 하였으나, 편집 값을 위해 ui 설정)
+  // 카드 UI(편집 값을 위해 ui 설정)
   const buildCard = (todo, editingId, handlers) => {
     const card = el("div", { className: "todo-card" });
     if (todo.status === "done") card.classList.add("is-done");
@@ -317,11 +317,11 @@ const createBoard = () => {
   return { render };
 };
 
-/* ===== 앱 상태 ===== */
+/* 앱 상태 */
 let todos = [];
 let editingId = null;
 
-/* ===== 모듈 생성 ===== */
+/* 모듈 생성 */
 const header = createHeader();
 const dashboard = createDashboard();
 const filter = createFilter({ onChange: () => render() });
@@ -332,7 +332,7 @@ const adder = createAdder({
 const board = createBoard();
 const confirm = createConfirmModal();
 
-/* ===== 데이터 조작 ===== */
+/* 데이터 관리 */
 const makeId = () =>
   crypto?.randomUUID?.() ??
   String(Date.now()) + Math.random().toString(16).slice(2);
@@ -385,7 +385,7 @@ function saveEdit(id, patch) {
   render();
 }
 
-/* ===== 렌더 ===== */
+/* 렌더 */
 function render() {
   header.renderGreeting();
   dashboard.render(todos);
@@ -405,7 +405,7 @@ function render() {
   renderDueAlert(todos);
 }
 
-/* ===== 초기화 ===== */
+/* 초기화 */
 function init() {
   todos = loadTodos();
 
@@ -422,7 +422,7 @@ function init() {
   render();
 }
 
-/* ===== 엔트리 ===== */
+/* 엔트리 */
 export function initApp() {
   if (window.__flowdash_inited) return window.__flowdash_api;
   window.__flowdash_inited = true;
