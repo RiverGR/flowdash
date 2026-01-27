@@ -80,19 +80,19 @@ const renderDueAlert = (todos) => {
 
   if (top.left < 0) {
     el.textContent = `마감일이 지난 일이 있어요. (${candidates.filter((t) => t.left < 0).length}건)`;
-    el.className = "due-alert due-alert--danger";
+    el.className = "due-alert due-alert--danger due-out";
     return;
   }
 
   if (top.left === 0) {
     el.textContent = `오늘 마감인 일이 있어요: "${top.title}"`;
-    el.className = "due-alert due-alert--warn";
+    el.className = "due-alert due-alert--warn due-orange";
     return;
   }
 
   if (top.left === 1) {
     el.textContent = `이 일의 마감일이 하루 남았습니다: "${top.title}"`;
-    el.className = "due-alert due-alert--warn";
+    el.className = "due-alert due-alert--warn due-green";
     return;
   }
 
@@ -115,7 +115,7 @@ const createConfirmModal = () => {
   const open = (type, id = null) => {
     pending = { type, id };
     if (dom.msg)
-      dom.msg.textContent = type === "all" ? "전체 삭제할까요?" : "삭제할까요?";
+      dom.msg.textContent = type === "all" ? "정말 삭제하시겠습니까? 초기화 후엔 되돌릴 수 없습니다." : "삭제할까요?";
     dom.modal?.classList.remove("hidden");
   };
 
@@ -175,6 +175,7 @@ const createBoard = () => {
     titleInput.value = todo.title ?? "";
     titleInput.maxLength = 80;
     titleInput.placeholder = "제목 입력";
+    
     titleField.append(titleInput);
 
     const row = el("div", { className: "filter-grid" });
@@ -183,7 +184,8 @@ const createBoard = () => {
 
     const statusField = el("label", { className: "field" });
     statusField.append(el("span", { className: "label", text: "상태" }));
-    const statusSel = buildSelect(
+    statusField.style.marginTop = "10px";
+        const statusSel = buildSelect(
       ["todo", "doing", "done"],
       todo.status,
       STATUS_LABEL,
