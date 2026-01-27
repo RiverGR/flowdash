@@ -130,7 +130,7 @@
 
 /* 아래 영역: 한 줄 전체폭 */
 .work {
-  margin-top: 16px;
+  margin: 16px 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;

@@ -169,6 +169,7 @@ textarea {
   padding: 10px 12px;
   outline: none;
   line-height: 1.25;
+  resize: none; 
 }
 html[data-theme="light"] input,
 html[data-theme="light"] select,
@@ -238,4 +239,17 @@ html[data-theme="light"] option {
 }
 .btn.ghost {
   background: transparent;
+}
+
+html,
+body,
+.todo-card,
+.todo-top,
+.todo-badges,
+.todo-meta,
+.edit-panel {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
 }

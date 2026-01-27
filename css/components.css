@@ -127,6 +127,7 @@
 /* Composer 접근성(버튼 배치 개선) */
 .composer {
   padding: 16px;
+  /* margin-bottom: 20px; */
 }
 .composer-grid {
   display: grid;
@@ -428,4 +429,8 @@ html[data-theme="light"] .empty {
 .filters .filter-grid {
   flex: 1;
   align-content: start;
+}
+
+#content{
+   resize: none;
 }
