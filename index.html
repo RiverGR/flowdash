@@ -5,17 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FocusFlow - Todo Dashboard</title>
 
-    <script>
-      // 초기 렌더링 전에 접힘 상태를 먼저 적용해서 깜빡임(펼쳐졌다가 접힘)을 방지
-      (function () {
-        try {
-          document.documentElement.classList.add("preload");
-          const v = localStorage.getItem("flowdash-composer-collapsed");
-          if (v === "1")
-            document.documentElement.classList.add("composer-collapsed");
-        } catch (e) {}
-      })();
-    </script>
+    <script src="./js/preload.js"></script>
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/layout.css" />
@@ -241,7 +231,13 @@
 
               <label class="field due">
                 <span class="label">마감일</span>
-                <input id="due-date" type="date" min="1900-01-01" max="2100-12-31" aria-label="마감일 선택" />
+                <input
+                  id="due-date"
+                  type="date"
+                  min="1900-01-01"
+                  max="2100-12-31"
+                  aria-label="마감일 선택"
+                />
               </label>
 
               <label class="field content">
