@@ -171,10 +171,30 @@ textarea {
   line-height: 1.25;
   resize: none;
 }
-html[data-theme="light"] input,
-html[data-theme="light"] select,
-html[data-theme="light"] textarea {
-  background: rgba(15, 23, 42, 0.04);
+
+/* 기본 화살표 제거 + 커스텀 쉐브론(안쪽/비율 고정) */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* 화살표 공간 확보 */
+  padding-right: 44px;
+
+  /* 커스텀 쉐브론 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.85)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+
+  /* 조금 안쪽으로 이동 */
+  background-position: right 10px center;
+
+  /* 비율에 맞게 크기 고정 */
+  background-size: 14px 14px;
+}
+
+/* 라이트 테마에서 화살표가 안 보이는 문제만 해결: SVG 색 고정 */
+html[data-theme="light"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(15,23,42,0.75)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
 }
 
 body {
