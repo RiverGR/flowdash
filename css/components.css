@@ -5,7 +5,7 @@
   box-shadow: var(--shadow);
   backdrop-filter: blur(16px);
 }
-
+/*section-title 디자인*/
 .section-title {
   font-size: 16px;
   letter-spacing: -0.01em;
@@ -120,6 +120,8 @@
   font-size: 12px;
   color: var(--muted2);
 }
+
+/*반응형*/
 @media (max-width: 980px) {
   .filter-grid {
     grid-template-columns: 1fr 1fr;
@@ -199,7 +201,7 @@
   justify-content: space-between;
   gap: 12px;
 }
-
+/*툴팁 CSS*/
 .help {
   font-size: 10px;
   font-weight: 600;
@@ -229,7 +231,7 @@
   pointer-events: none;
   z-index: 9999;
 }
-
+/*툴팁 호버시 나타나기*/
 .help:hover .tooltip,
 .help:focus-visible .tooltip {
   opacity: 1;
