@@ -86,6 +86,7 @@ const renderDueAlert = (todos) => {
     return;
   }
 
+  // 가장 촉박한 것부터 정렬
   candidates.sort((a, b) => a.left - b.left);
   const top = candidates[0];
 
@@ -113,6 +114,7 @@ const renderDueAlert = (todos) => {
 
 /* 삭제 확인 모달  */
 const createConfirmModal = () => {
+  // 삭제 확인 모달을 제어하는 객체를 만드는 함수
   const dom = {
     modal: $("#modal"),
     msg: $("#modal-msg"),
@@ -120,37 +122,44 @@ const createConfirmModal = () => {
     ok: $("#modal-ok"),
   };
 
-  // 삭제하기 위해서 대기를 하는 값
+  // 사용자가 확인을 누르기 전까지 “어떤 삭제인지” 임시 저장(type/id)
   let pending = null;
 
   const open = (type, id = null) => {
+    // 모달 열기: type=all 또는 one, one이면 id 필요
     pending = { type, id };
     if (dom.msg)
       dom.msg.textContent =
         type === "all"
           ? "정말 삭제하시겠습니까? 초기화 후엔 되돌릴 수 없습니다."
           : "삭제할까요?";
+    // hidden 제거로 모달 표시
     dom.modal?.classList.remove("hidden");
   };
 
+  // 모달 닫기
   const close = () => {
+    // 삭제 정보 초기화
     pending = null;
+    // hidden을 추가함으로 모달을 다시 숨김
     dom.modal?.classList.add("hidden");
   };
 
+  // 확인을 눌렀을 때에 외부 로직을 바로 실행할 수 있도록 콜백을 받음(이벤트 바인딩)
   const bind = (onOk) => {
-    dom.cancel?.addEventListener("click", close);
+    dom.cancel?.addEventListener("click", close); // 취소 버튼 클릭함으로 닫기
     dom.modal?.addEventListener("click", (e) => {
+      // 배경을 클릭할 때에도 닫을 수 있도록 설정
       if (e.target === dom.modal) close();
     });
     dom.ok?.addEventListener("click", () => {
       if (!pending) return;
-      onOk?.(pending);
+      onOk?.(pending); // (type, id)를 로직에 전달
       close();
     });
   };
 
-  return { open, bind };
+  return { open, bind }; // 외부에서 open과 bind 함수를 쓸 수 있게 반환하기
 };
 
 /* 보드(카드 UI) */
@@ -167,13 +176,15 @@ const createBoard = () => {
 
   // select 박스 생성
   const buildSelect = (values, selected, labelMap) => {
-    const sel = el("select");
+    // select를 만들고 option을 채우는 함수
+    const sel = el("select"); // select 생성
     for (const v of values) {
-      const opt = document.createElement("option");
-      opt.value = v;
-      opt.textContent = labelMap[v];
+      // values 배열을 돌며 option 생성
+      const opt = document.createElement("option"); // option 생성
+      opt.value = v; // 실제로 저장될 값
+      opt.textContent = labelMap[v]; // 사용자에게 보여줄 텍스트
       if (v === selected) opt.selected = true;
-      sel.append(opt);
+      sel.append(opt); // select 추가하기
     }
     return sel;
   };
@@ -181,8 +192,10 @@ const createBoard = () => {
   // 편집 패널 UI(css를 쓰지 않고 js에서 스타일 지정)
   // 이유 : 원래 카드 ui에서 늘어나는 형식으로 바뀌는 것이기 때문에 카드 ui 추가하고, 편집 ui도 추가함
   const buildEditPanel = (todo, handlers) => {
+    // 편집 모드를 들어갈 때 카드 내부에 들어갈 편집 UI를 생성하는 함수
     const wrap = el("div", { className: "edit-panel" });
 
+    // 제목 필드(label)
     const titleField = el("label", { className: "field" });
     titleField.append(el("span", { className: "label", text: "제목" }));
     const titleInput = el("input", { type: "text" });
