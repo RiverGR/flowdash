@@ -1,17 +1,21 @@
 // UI 모듈 import (헤더, 대시보드, 필터, 추가 폼)
+// 각각 js 파일에 있는 함수를 가져오기 위함
 import { createHeader } from "./greeting.js";
 import { createDashboard } from "./dash.js";
 import { createFilter } from "./filter.js";
 import { createAdder } from "./add.js";
 
 /* 상수 값 설정 */
+// xxx_LABEL은 매핑
 const PRIORITY_LABEL = { high: "높음", mid: "중간", low: "낮음" };
 const STATUS_LABEL = { todo: "시작 전", doing: "진행중", done: "완료" };
-const KEY_TODOS = "flowdash-todos";
+const KEY_TODOS = "flowdash-todos"; // 로컬스토리지에서 todos 값을 저장할 때 사용할 이름
 
 /* DOM 유틸 */
+// 단축 함수를 활용하여 DOM을 빠르게 불러오는 역할
 const $ = (sel, root = document) => root.querySelector(sel);
 
+// 요소 생성 헬퍼: tag로 만들고 className/text/type을 한 번에 설정한다
 const el = (tag, { className, text, type } = {}) => {
   const n = document.createElement(tag);
   if (className) n.className = className;
@@ -20,11 +24,13 @@ const el = (tag, { className, text, type } = {}) => {
   return n;
 };
 
+// 특정 노드 내부를 비우는 함수(리스트 재렌더링 전에 사용)
 const clearNode = (node) => {
   if (!node) return;
   node.innerHTML = "";
 };
 
+// 배지 UI(span)를 만들어 우선순위/상태/마감일 등을 표시
 const makeBadge = (text, dim = false) => {
   const b = el("span", { className: "badge", text });
   if (dim) b.classList.add("dim");
@@ -32,6 +38,7 @@ const makeBadge = (text, dim = false) => {
 };
 
 /* 로컬스토리지  */
+// 로컬스토리지에서 todos 배열을 불러오는 함수
 const loadTodos = () => {
   try {
     return JSON.parse(localStorage.getItem(KEY_TODOS) || "[]");
@@ -40,17 +47,20 @@ const loadTodos = () => {
   }
 };
 
+// todos 배열을 로컬스토리지에 저장하는 함수
 const saveTodos = (todos) => {
   localStorage.setItem(KEY_TODOS, JSON.stringify(todos));
 };
 
 /* 날짜 유틸 */
+// yyyy-mm-dd 문자열을 Date(ms)로 바꾸는 함수
 const parseYMD = (s) => {
   if (!s) return null;
   const d = new Date(s + "T00:00:00");
   return Number.isNaN(d.getTime()) ? null : d.getTime();
 };
 
+// 마감일까지 남은 일 수 계산(오늘 기준)
 const daysLeftByYMD = (ymd) => {
   const dueAt = parseYMD(ymd);
   if (dueAt == null) return null;
@@ -59,16 +69,17 @@ const daysLeftByYMD = (ymd) => {
 };
 
 /*  마감일 경고 배너  */
-//  후에 디자인 추가 업데이트 필요.
+// 상단/하단 배너(#due-alert)에 마감 임박 경고를 보여주는 함수
 const renderDueAlert = (todos) => {
   const el = document.querySelector("#due-alert");
   if (!el) return;
-
+  // 완료되지 않았고 마감일이 있는 것들만
   const candidates = todos
     .filter((t) => t.status !== "done" && t.dueDate)
     .map((t) => ({ ...t, left: daysLeftByYMD(t.dueDate) }))
     .filter((t) => typeof t.left === "number");
 
+  // 후보가 없으면 배너 비우기
   if (!candidates.length) {
     el.textContent = "";
     el.className = "due-alert";
