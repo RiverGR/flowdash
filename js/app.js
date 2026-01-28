@@ -200,11 +200,12 @@ const createBoard = () => {
     titleField.append(el("span", { className: "label", text: "제목" }));
     const titleInput = el("input", { type: "text" });
     titleInput.value = todo.title ?? "";
-    titleInput.maxLength = 80;
+    titleInput.maxLength = 40;
     titleInput.placeholder = "제목 입력";
 
     titleField.append(titleInput);
 
+    // 상태/우선순위/마감일 한 줄로 묶는 컨테이너
     const row = el("div", { className: "filter-grid" });
     row.style.gridTemplateColumns = "1fr";
     row.style.gap = "10px";
