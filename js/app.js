@@ -259,7 +259,6 @@ const createBoard = () => {
   // 카드 UI(편집 값을 위해 ui 설정)
   const buildCard = (todo, editingId, handlers) => {
     const card = el("div", { className: "todo-card" });
-    if (todo.status === "done") card.classList.add("is-done");
     card.dataset.id = todo.id;
 
     const top = el("div", { className: "todo-top" });

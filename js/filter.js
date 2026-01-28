@@ -78,21 +78,26 @@ export const createFilter = ({ onChange } = {}) => {
     arr = arr.filter((t) => withinPeriod(t, p));
     if (st !== "all") arr = arr.filter((t) => t.status === st);
 
-    const sortFn =
-      so === "latest"
-        ? (a, b) => b.createdAt - a.createdAt
-        : so === "oldest"
-          ? (a, b) => a.createdAt - b.createdAt
-          : so === "titleAsc"
-            ? (a, b) => a.title.localeCompare(b.title, "ko")
-            : so === "titleDesc"
-              ? (a, b) => b.title.localeCompare(a.title, "ko")
-              : so === "priority"
-                ? (a, b) =>
-                    PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]
-                : so === "status"
-                  ? (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status]
-                  : () => 0;
+const PRIORITY_ORDER = { high: 0, mid: 1, low: 2 };
+const STATUS_ORDER = { todo: 0, doing: 1, done: 2 };
+
+const sortFn =
+  so === "latest"
+    ? (a, b) => (b.createdAt ?? 0) - (a.createdAt ?? 0)
+    : so === "oldest"
+      ? (a, b) => (a.createdAt ?? 0) - (b.createdAt ?? 0)
+      : so === "titleAsc"
+        ? (a, b) => (a.title ?? "").localeCompare((b.title ?? ""), "ko")
+        : so === "titleDesc"
+          ? (a, b) => (b.title ?? "").localeCompare((a.title ?? ""), "ko")
+          : so === "priority"
+            ? (a, b) =>
+                (PRIORITY_ORDER[a.priority] ?? 99) - (PRIORITY_ORDER[b.priority] ?? 99)
+            : so === "status"
+              ? (a, b) =>
+                  (STATUS_ORDER[a.status] ?? 99) - (STATUS_ORDER[b.status] ?? 99)
+              : () => 0;
+
 
     return arr.slice().sort(sortFn);
   };
