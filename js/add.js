@@ -24,7 +24,7 @@ export const createAdder = ({ onAdd, onClearAll } = {}) => {
     composerCard.classList.toggle("collapsed", collapsed);
     toggleBtn.setAttribute("aria-expanded", String(!collapsed));
 
-    // 새로고침 깜빡임 방지를 위해 <html>에도 동일한 상태를 반영
+    // 새로고침 깜빡임 방지를 위해 preload.js에도 동일한 상태를 반영
     document.documentElement.classList.toggle("composer-collapsed", collapsed);
 
     try {
