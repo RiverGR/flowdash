@@ -168,11 +168,13 @@ body::before {
   display: inline-block;
   width: 10px;
 }
-#content, #todo-input {
+#content, #todo-input,#due-date {
   width: 97%;
   margin: 3px 5px;
 
 }
+
+
 input,
 select,
 textarea {
