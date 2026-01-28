@@ -284,7 +284,7 @@ html {
   gap: 12px;
 }
 .list-head .due-alert {
-  margin-right: auto; /* 가운데(오른쪽)로 밀기 */
+  margin-right: auto; 
 }
 
 .due-out {
@@ -302,13 +302,10 @@ html {
   font-weight: bold;
 }
 
-/* 보통은 body, 주요 카드/버튼에도 걸어줘야 자연스러움 */
+
 body, .card, header, button, input, textarea, select {
   transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
 }
 
-
-
-/* 변수를 실제 스타일에 연결 */
 body { background-color: var(--bg); color: var(--text); }
 .card { background-color: var(--card); border: 1px solid var(--border); }
