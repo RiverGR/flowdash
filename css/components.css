@@ -551,8 +551,7 @@ html[data-theme="light"] .empty {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 10px;
-}
+  }
 
 .composer-toggle {
   width: 40px;
