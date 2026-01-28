@@ -187,7 +187,6 @@ const createBoard = () => {
 
     const statusField = el("label", { className: "field" });
     statusField.append(el("span", { className: "label", text: "상태" }));
-    statusField.style.marginTop = "10px";
     const statusSel = buildSelect(
       ["todo", "doing", "done"],
       todo.status,
