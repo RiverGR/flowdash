@@ -207,9 +207,10 @@ const createBoard = () => {
 
     // 상태/우선순위/마감일 한 줄로 묶는 컨테이너
     const row = el("div", { className: "filter-grid" });
-    row.style.gridTemplateColumns = "1fr";
+    row.style.gridTemplateColumns = "1fr"; // inline 스타일로 레이아웃을 js로 제어하기
     row.style.gap = "10px";
 
+    // 상태 라벨 및 텍스트와 select 생성하기
     const statusField = el("label", { className: "field" });
     statusField.append(el("span", { className: "label", text: "상태" }));
     const statusSel = buildSelect(
@@ -219,6 +220,7 @@ const createBoard = () => {
     );
     statusField.append(statusSel);
 
+    // 우선순위 라벨 select 생성하기
     const priField = el("label", { className: "field" });
     priField.append(el("span", { className: "label", text: "우선순위" }));
     const priSel = buildSelect(
@@ -228,21 +230,23 @@ const createBoard = () => {
     );
     priField.append(priSel);
 
+    // 마감일 라벨 select 생성하기
     const dueField = el("label", { className: "field" });
     dueField.append(el("span", { className: "label", text: "마감일" }));
     const dueInput = el("input", { type: "date" });
 
-    dueInput.min = new Date().toISOString().slice(0, 10);
+    dueInput.min = new Date().toISOString().slice(0, 10); // 그 당일보다 전 날짜는 선택하지 못하게 제한함.
 
-    const max = new Date();
+    const max = new Date(); // 최대 날짜를 설정
     max.setFullYear(max.getFullYear() + 1);
     dueInput.max = max.toISOString().slice(0, 10);
 
-    dueInput.value = todo.dueDate ?? "";
-    dueField.append(dueInput);
+    dueInput.value = todo.dueDate ?? ""; // 기존 마감을 표시
+    dueField.append(dueInput); // label에 date input을 추가함
 
-    row.append(statusField, priField, dueField);
+    row.append(statusField, priField, dueField); // 위의 라벨들을 전부 한 줄로 배치
 
+    // 내용 관련 라벨 및 텍스트 필드
     const contentField = el("label", { className: "field" });
     contentField.append(el("span", { className: "label", text: "내용(옵션)" }));
     const ta = el("textarea");
@@ -251,8 +255,10 @@ const createBoard = () => {
     ta.value = todo.content ?? "";
     contentField.append(ta);
 
+    // 편집 패널 버튼 영역들
     const actions = el("div", { className: "todo-actions" });
 
+    // 취소 버튼
     const btnCancel = el("button", {
       className: "btn tiny ghost",
       text: "취소",
@@ -260,65 +266,77 @@ const createBoard = () => {
     btnCancel.type = "button";
     btnCancel.addEventListener("click", () => handlers.setEditing(null));
 
+    // 저장 버튼
     const btnSave = el("button", {
       className: "btn tiny primary",
       text: "저장",
     });
-    btnSave.type = "button";
+    btnSave.type = "button"; // submit 방지하기
     btnSave.addEventListener("click", () => {
+      // 클릭 할 때 입력값을 패치로 만들어 저장하기
       const nextTitle = titleInput.value.trim();
       handlers.saveEdit(todo.id, {
+        // 해당 id의 todo를 업데이트하기
         title: nextTitle || todo.title,
         status: statusSel.value,
         priority: priSel.value,
         content: ta.value,
-        dueDate: dueInput.value || null,
+        dueDate: dueInput.value || null, // 마감일이 없을 경우는 null로 설정(에러 방지)
       });
     });
 
-    actions.append(btnCancel, btnSave);
+    actions.append(btnCancel, btnSave); // 버튼 영역에 취소와 저장 버튼을 추가
     wrap.append(titleField, row, contentField, actions);
     return wrap;
   };
 
   // 카드 UI(편집 값을 위해 ui 설정)
   const buildCard = (todo, editingId, handlers) => {
-    const card = el("div", { className: "todo-card" });
+    // 단일로 할 일 카드 ui를 생성하기
+    const card = el("div", { className: "todo-card" }); // 카드 컨테이너
     if (todo.status === "done") card.classList.add("is-done");
     card.dataset.id = todo.id;
 
+    // 카드 상단 영역(제목)
     const top = el("div", { className: "todo-top" });
 
+    // 제목을 표시하게 해주는 컨테이너
     const title = el("div", { className: "todo-title", text: todo.title });
-    top.append(title);
+    top.append(title); // 제목 추가
 
+    // 뱃지 묶음 (우선순위, 상태, 마감일)
     const badges = el("div", { className: "todo-badges" });
     badges.append(makeBadge(PRIORITY_LABEL[todo.priority] ?? "중간"));
     badges.append(makeBadge(STATUS_LABEL[todo.status] ?? "시작 전", true));
     if (todo.dueDate) badges.append(makeBadge(`마감 ${todo.dueDate}`, true));
     top.append(badges);
 
+    // 내용 영역(있으면 표시하고, 없으면 놔두기)
     const meta = el("div", { className: "todo-meta" });
     if (todo.content) meta.textContent = todo.content;
     card.append(top, meta);
 
+    // 카드 하단에 있는 버튼 영역
     const actions = el("div", { className: "todo-actions" });
 
     if (editingId === todo.id) {
+      // 카드를 편집하고 있으면 편집 패널을 띄우고 있게 표시
       actions.append(buildEditPanel(todo, handlers));
     } else {
+      // 편집 중이 아니면 편집 버튼을 띄우기
       const btnEdit = el("button", {
         className: "btn tiny ghost",
         text: "편집",
       });
       btnEdit.type = "button";
       btnEdit.addEventListener("click", () => handlers.setEditing(todo.id));
-
+      // 삭제 버튼 띄우는 중
       const btnDel = el("button", {
         className: "btn tiny danger",
         text: "삭제",
       });
       btnDel.type = "button";
+      // 삭제 버튼을 눌면 삭제 모달을 열도록 요청을 함
       btnDel.addEventListener("click", () => handlers.deleteOne(todo.id));
 
       actions.append(btnEdit, btnDel);
@@ -330,38 +348,48 @@ const createBoard = () => {
 
   // 보드 렌더(없으면 할 일을 저장해도 TODO BOARD에 추가가 안됨)
   const render = (todos, editingId, handlers) => {
-    if (!listTodo || !listDoing || !listDone) return;
+    // 리스트(todo, doing, done)에다가 카드를 다시 랜더링
+    if (!listTodo || !listDoing || !listDone) return; // DOM이 없으면 종료하기
 
+    // 각 상태를 따로 분리함
     const todoArr = todos.filter((t) => t.status === "todo");
     const doingArr = todos.filter((t) => t.status === "doing");
     const doneArr = todos.filter((t) => t.status === "done");
 
+    // 각 상태의 개수를 즉시 업데이트 함
     if (laneCountTodo) laneCountTodo.textContent = String(todoArr.length);
     if (laneCountDoing) laneCountDoing.textContent = String(doingArr.length);
     if (laneCountDone) laneCountDone.textContent = String(doneArr.length);
 
+    // 기존에 있던 상태 카드들을 제거한다.
     clearNode(listTodo);
     clearNode(listDoing);
     clearNode(listDone);
 
+    // 사용자가 카드를 추가하면 알맞은 카드 부분에 카드를 추가한다.
     for (const t of todoArr) listTodo.append(buildCard(t, editingId, handlers));
     for (const t of doingArr)
       listDoing.append(buildCard(t, editingId, handlers));
     for (const t of doneArr) listDone.append(buildCard(t, editingId, handlers));
   };
 
+  // 외부 영역에서 render를 호출을 할 수 있게 반환한다.
   return { render };
 };
 
 /* 앱 상태 */
+// 앱이 관리하는 모든 할 일 데이터의 원본을 가지고 있고
+// 현재 편집 중인 카드의 id를 가지고 있는다.(없으면 null 상태)
 let todos = [];
 let editingId = null;
 
 /* 모듈 생성 */
+// 헤더, 대시보드, 필터, 추가할 때의 폼, 보드, 삭제 할 때 확인 인스턴트를 생성한다.
 const header = createHeader();
 const dashboard = createDashboard();
-const filter = createFilter({ onChange: () => render() });
+const filter = createFilter({ onChange: () => render() }); // 여기선 변경할 때마다 render를 재실행 한다.
 const adder = createAdder({
+  // 모듈 생성도 생성이지만 이벤트를 연결하는 역할도 받는다.
   onAdd: (data) => addTodo(data),
   onClearAll: () => confirm.open("all"),
 });
@@ -370,46 +398,52 @@ const confirm = createConfirmModal();
 
 /* 데이터 관리 */
 const makeId = () =>
+  // todo의 고유 id를 만든다. // 만약 브라우저가 지원하면 randomUUID를 사용할 수 있게 한다.
   crypto?.randomUUID?.() ??
-  String(Date.now()) + Math.random().toString(16).slice(2);
+  String(Date.now()) + Math.random().toString(16).slice(2); // 지원을 하지 않으면 시간과 난수로 대체한다.
 
 function addTodo({ title, content, priority, dueDate }) {
-  const now = Date.now();
+  // 새 할 일을 추가하는 함수
+  const now = Date.now(); // 생성, 수정 시간을 동일하게 넣기 위해서 현재 시간을 저장한다.
   todos.unshift({
-    id: makeId(),
+    // 새 항목을 배열 맨 앞에 넣어서 최신이 위로 오게 한다.
+    id: makeId(), // id 값을 불러온걸 적용한다.
     title,
-    content: content || "",
-    priority: priority || "mid",
-    dueDate: dueDate || null,
+    content: content || "", // 내용(없으면 빈 문자열)
+    priority: priority || "mid", // 우선 순위(없으면 mid가 기본)
+    dueDate: dueDate || null, // 마감일(없으면 null 처리)
     status: "todo",
-    createdAt: now,
-    updatedAt: now,
+    createdAt: now, // 생성과 밑의 수정 시간은 기존엔 있었으나, 후에 업데이트 이후 추가할 예정으로
+    updatedAt: now, // 미래 대비용 코드로 코드 작성에는 삭제하지 않고 남겨놓음
   });
 
-  saveTodos(todos);
-  render();
+  saveTodos(todos); // 로컬스토리지 저장
+  render(); // 화면을 다시 갱신
 }
-
+// 특정 할 일을 삭제하는 함수
 function applyDelete(id) {
-  todos = todos.filter((t) => t.id !== id);
-  if (editingId === id) editingId = null;
+  todos = todos.filter((t) => t.id !== id); // 삭제할 id만 제외하고 다시 저장
+  if (editingId === id) editingId = null; // 삭제한 항목이 편집 중이면 편집 상태를 해제
   saveTodos(todos);
   render();
 }
 
+// 모든 할 일을 삭제하는 함수
 function applyClearAll() {
-  todos = [];
-  editingId = null;
-  saveTodos(todos);
+  todos = []; // todos 목록 초기화
+  editingId = null; // 편집 상태도 초기화
+  saveTodos(todos); // 로컬스토리지 반영
   render();
 }
 
+// 편집 내용(패치)을 저장하는 함수
 function saveEdit(id, patch) {
-  const idx = todos.findIndex((t) => t.id === id);
-  if (idx === -1) return;
+  const idx = todos.findIndex((t) => t.id === id); // 수정할 항목의 id를 찾음
+  if (idx === -1) return; // 없으면 종료
 
-  const now = Date.now();
+  const now = Date.now(); // 미래 대비용 코드(수정 시간 갱신)
   todos[idx] = {
+    // 기존 todo에 패치를 덮어씌워서 업데이트 하는 방식으로 만듦.
     ...todos[idx],
     ...patch,
     dueDate: patch.dueDate ?? null,
@@ -422,47 +456,59 @@ function saveEdit(id, patch) {
 }
 
 /* 렌더 */
+// 앱 전체 화면을 다시 만드는 함수(중요)
 function render() {
-  header.renderGreeting();
-  dashboard.render(todos);
+  header.renderGreeting(); // 인삿말, 테마, 닉네임[ 등을 렌더
+  dashboard.render(todos); // 대시보드 렌더
 
+  // 현재 필터에 UI 입력값을 읽어서 객체로 만듦
   const view = filter.readViewFromInputs();
+  // 원본 todos의 필터/정렬을 적용한 결과로 만든다.
   const viewTodos = filter.getViewTodos(todos, view);
 
+  // 필터가 적용된 목록을 보드에 렌더
   board.render(viewTodos, editingId, {
     setEditing: (id) => {
+      // 편집 시작/종료 핸들러
       editingId = id;
       render();
     },
     saveEdit,
+    // 삭제 버튼 누르면 단일 삭제 확인 모달 띄우기
     deleteOne: (id) => confirm.open("one", id),
   });
-
+  // 마감일 경고 배너는 전체 원본 기준으로 계산해서 표시
   renderDueAlert(todos);
 }
 
 /* 초기화 */
+// 최초 실행 시에 한 번만 수행되는 초기화 로직을 생성
 function init() {
-  todos = loadTodos();
+  todos = loadTodos(); // 로컬스토리지에서 이전에 저장된 값들을 불러옴
 
+  // 헤더, 필터, 추가 폼 이벤트 바인딩
   header.bind();
-  dashboard.startTicker();
+  dashboard.startTicker(); // 대시보드의 타이머/시계 같은 주기 작업을 시작함
   filter.bind();
   adder.bind();
 
+  // 모달에서 확인을 눌렀을 때 실행할 실제 삭제 처리를 연결함
   confirm.bind(({ type, id }) => {
-    if (type === "all") applyClearAll();
-    else applyDelete(id);
+    if (type === "all")
+      applyClearAll(); // 전체 삭제면 완전 초기화
+    else applyDelete(id); // 단일 삭제면 해당 id만 삭제
   });
 
   render();
 }
 
 /* 엔트리 */
+// 외부에서 호출하는 앱 시작 함수(entry.js)
 export function initApp() {
+  // 이미 초기화가 되었다면 기존 API를 반환함
   if (window.__flowdash_inited) return window.__flowdash_api;
-  window.__flowdash_inited = true;
-  init();
-  window.__flowdash_api = { render };
-  return window.__flowdash_api;
+  window.__flowdash_inited = true; // 초기화 완료
+  init(); // 수행
+  window.__flowdash_api = { render }; // 외부에서 render를 다시 호출할 수 있도록 API를 노출시킴
+  return window.__flowdash_api; // 반환
 }
