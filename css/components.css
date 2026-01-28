@@ -157,8 +157,10 @@
 
 .composer-actions {
   display: flex;
+  justify-content: flex-end;
   flex-direction: row;
   margin-top: 16px;
+  margin-right: 6px;
 }
 
 .composer .title-main {
@@ -177,6 +179,9 @@
   }
   .composer-grid .composer-actions {
     justify-content: stretch;
+  }
+  .composer-actions {
+    margin-right: 0;
   }
   #clear-btn {
     width: 100%;
@@ -280,7 +285,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* 카드: 보기 모드(기본) */
@@ -491,7 +496,7 @@ html[data-theme="light"] .empty {
   /* 각 필드(제목/상태/우선순위/마감일 등) 사이 간격을 컨테이너에서 관리 */
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 
   /* 위쪽 여백(기존 margin-top)이 아래 규칙에서 덮이지 않게 복구 */
   margin: 12px auto 0;
