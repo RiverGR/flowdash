@@ -92,7 +92,7 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Data</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Maintenance</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">JS</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UI</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Project Manager</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Git</span>
     </td>
@@ -125,7 +125,6 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
     <td><b>한찬우</b></td>
     <td>팀원(Contributor)</td>
     <td>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UI</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UX</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Theme</span>
       <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
@@ -176,21 +175,31 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
 flowdash/
 ├─ README.md
 ├─ index.html
+│
 ├─ css/
-│ ├─ base.css
-│ ├─ components.css
-│ ├─ layout.css
-│ └─ modal.css
+│  ├─ UX/
+│  │  └─ base.css              # 전역 스타일, 색상/폰트 등 UX 기본 규칙
+│  │
+│  └─ UI/
+│     ├─ layout.css            # 전체 레이아웃 구조
+│     ├─ components.css        # 버튼, 카드 등 UI 컴포넌트
+│     └─ modal.css             # 모달 및 오버레이 UI
+│
 └─ js/
-├─ app.js
-├─ add.js
-├─ dash.js
-├─ entry.js
-├─ filter.js
-├─ greeting.js
-├─ nickname.js
-├─ preload.js
-├─ theme.js
+   ├─ STATE/
+   │  ├─ entry.js              # 앱 부팅 관리 및 중복 실행 방지
+   │  ├─ app.js                # Todo 상태 관리 및 CRUD, 렌더링 중심 로직
+   │  └─ preload.js            # 초기 UI 상태 선적용(깜빡임 방지)
+   │
+   ├─ UI/
+   │  ├─ add.js                # 할 일 추가 UI 및 입력 이벤트 처리
+   │  ├─ filter.js             # 검색, 필터, 정렬 UI 로직
+   │  └─ dash.js               # 통계 계산 및 대시보드 UI
+   │
+   └─ UX/
+      ├─ theme.js              # 라이트/다크 테마 전환 및 저장
+      ├─ nickname.js           # 사용자 닉네임 설정 및 저장
+      └─ greeting.js           # 시간대별 인삿말 표시
 ```
 
 ---
