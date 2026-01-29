@@ -73,11 +73,11 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
 
 ## 👥 팀 구성 및 역할 분담
 
-| 이름   | 역할                                             | 주요 담당                                  | GitHub                                                                                                                                       |
-| ------ | ------------------------------------------------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| 이가람 | App Initialization / State Flow / JS Maintenance | 앱 구조, 상태 흐름, 부팅 중복 방지 관리    | [![GitHub](https://img.shields.io/badge/GitHub-RiverGR-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/RiverGR)    |
-| 최은주 | Feature UI / Interaction Design                  | 할 일 추가, 필터, 대시보드 UI 및 기능 구현 | [![GitHub](https://img.shields.io/badge/GitHub-ejo--o-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ejo-o)       |
-| 한찬우 | UX / Theme / CSS Maintenance                     | 닉네임, 인삿말, 테마 로직 구현 및 UI 보완  | [![GitHub](https://img.shields.io/badge/GitHub-cmd--obam-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/cmd-obam) |
+| 이름      | 구분 | 역할                                                              | 주요 담당                                  | GitHub                                                                                                                                       |
+| --------- | ---- | ----------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| 👤 이가람 | 팀장 | CSS / Design 설계, JS 데이터 구조 설계 및 유지보수, 프로젝트 관리 | 앱 구조, 상태 흐름, 부팅 중복 방지 관리    | [![GitHub](https://img.shields.io/badge/GitHub-RiverGR-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/RiverGR)    |
+| 👤 최은주 | 팀원 | CSS 디자인 구현, UI 개발, JS 기능 구현                            | 할 일 추가, 필터, 대시보드 UI 및 기능 구현 | [![GitHub](https://img.shields.io/badge/GitHub-ejo--o-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ejo-o)       |
+| 👤 한찬우 | 팀원 | CSS 디자인 유지보수, JS 유지보수, UI 개발, JS 기능 구현           | 닉네임, 인삿말, 테마 로직 구현 및 UI 보완  | [![GitHub](https://img.shields.io/badge/GitHub-cmd--obam-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/cmd-obam) |
 
 </div>
 
