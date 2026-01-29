@@ -1,12 +1,12 @@
 import { initApp } from "./app.js";
 
 // 모듈 로드(등록/이벤트 준비)용: 각각의 내부 로직과 이벤트들과 설정들을 준비하고 실행
-import "./greeting.js";
-import "./nickname.js";
-import "./theme.js";
-import "./add.js";
-import "./filter.js";
-import "./dash.js";
+import "../UX/greeting.js";
+import "../UX/nickname.js";
+import "../UX/theme.js";
+import "../UI/add.js";
+import "../UI/filter.js";
+import "../UI/dash.js";
 
 // 중복 부팅 방지 플래그(예약 플래그 사용, initApp이 실행이 되었는지 여부 기록)
 let scheduled = false;

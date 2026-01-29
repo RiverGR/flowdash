@@ -1,10 +1,9 @@
 // UI 모듈 import (헤더, 대시보드, 필터, 추가 폼)
 // 각각 js 파일에 있는 함수를 가져오기 위함
-import { createHeader } from "./greeting.js";
-import { createDashboard } from "./dash.js";
-import { createFilter } from "./filter.js";
-import { createAdder } from "./add.js";
-
+import { createHeader } from "../UX/greeting.js";
+import { createDashboard } from "../UI/dash.js";
+import { createFilter } from "../UI/filter.js";
+import { createAdder } from "../UI/add.js";
 /* 상수 값 설정 */
 // xxx_LABEL은 매핑
 const PRIORITY_LABEL = { high: "높음", mid: "중간", low: "낮음" };

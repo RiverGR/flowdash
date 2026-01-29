@@ -73,11 +73,73 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
 
 ## 👥 팀 구성 및 역할 분담
 
-| 이름      | 구분 | 역할                                                              | 주요 담당                                  | GitHub                                                                                                                                       |
-| --------- | ---- | ----------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| 👤 이가람 | 팀장 | CSS / Design 설계, JS 데이터 구조 설계 및 유지보수, 프로젝트 관리 | 앱 구조, 상태 흐름, 부팅 중복 방지 관리    | [![GitHub](https://img.shields.io/badge/GitHub-RiverGR-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/RiverGR)    |
-| 👤 최은주 | 팀원 | CSS 디자인 구현, UI 개발, JS 기능 구현                            | 할 일 추가, 필터, 대시보드 UI 및 기능 구현 | [![GitHub](https://img.shields.io/badge/GitHub-ejo--o-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ejo-o)       |
-| 👤 한찬우 | 팀원 | CSS 디자인 유지보수, JS 유지보수, UI 개발, JS 기능 구현           | 닉네임, 인삿말, 테마 로직 구현 및 UI 보완  | [![GitHub](https://img.shields.io/badge/GitHub-cmd--obam-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/cmd-obam) |
+<h2>👥 팀 소개</h2>
+
+<table>
+  <tr>
+    <th>이름</th>
+    <th>구분</th>
+    <th>세부 역할</th>
+    <th>주요 담당</th>
+    <th>GitHub</th>
+  </tr>
+
+  <tr>
+    <td><b>이가람</b></td>
+    <td><b>팀장(Coordinator)</b></td>
+    <td>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Design</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Data</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Maintenance</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">JS</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Project Manager</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Git</span>
+    </td>
+    <td> 디자인 협업 <br> 앱 구조, 상태 흐름, 부팅 중복 방지 관리</td>
+    <td>
+      <a href="https://github.com/RiverGR" style="text-decoration:none;">
+        <img alt="GitHub RiverGR" src="https://img.shields.io/badge/GitHub-RiverGR-181717?style=flat-square&logo=github&logoColor=white" />
+      </a>
+    </td>
+  </tr>
+
+  <tr>
+    <td><b>최은주</b></td>
+    <td>팀원(Contributor)</td>
+    <td>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UI</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Features</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">JS</span>
+    </td>
+    <td>디자인 협업<br> 할 일 추가, 필터, 대시보드 UI 및 기능 구현</td>
+    <td>
+      <a href="https://github.com/ejo-o" style="text-decoration:none;">
+        <img alt="GitHub ejo-o" src="https://img.shields.io/badge/GitHub-ejo--o-181717?style=flat-square&logo=github&logoColor=white" />
+      </a>
+    </td>
+  </tr>
+
+  <tr>
+    <td><b>한찬우</b></td>
+    <td>팀원(Contributor)</td>
+    <td>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UI</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UX</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Theme</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Maintenance</span>
+      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">JS</span>
+    </td>
+    <td>디자인 유지보수 <br> 닉네임, 인삿말, 테마 로직 구현 및 UI 보완</td>
+    <td>
+      <a href="https://github.com/cmd-obam" style="text-decoration:none;">
+        <img alt="GitHub cmd-obam" src="https://img.shields.io/badge/GitHub-cmd--obam-181717?style=flat-square&logo=github&logoColor=white" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 </div>
 

@@ -1,4 +1,4 @@
-import { ensureBoot } from "./entry.js";
+import { ensureBoot } from "../STATE/entry.js";
 // 카드를 추가할 때 모듈 생성
 export const createAdder = ({ onAdd, onClearAll } = {}) => {
   const $ = (sel) => document.querySelector(sel); // querySelector 단축 함수
