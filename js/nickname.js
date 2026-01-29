@@ -7,25 +7,26 @@ export const createNickname = ({ greetingEl, onChange } = {}) => {
 
   // 저장된 닉네임을 가져오고 없으면 기본값 사용자를 반환
   // 그리고 저장된 닉네임은 로컬스토리지에 저
-  const getName = () => localStorage.getItem(KEY_NAME) || "사용자";
+  const getName = () => localStorage.getItem(KEY_NAME) || "FlowDash";
   const setName = (name) => localStorage.setItem(KEY_NAME, name);
 
   // 랜덤 닉네임을 만들기 위한 함수(임의로 수정 가능)
   const randomNickname = () => {
     const a = ["푸른", "따뜻한", "빠른", "조용한", "빛나는", "멋진"];
     const b = ["여우", "고양이", "토끼", "곰", "호랑이", "돌고래"];
-    return ( // const a와 b를 랜덤하게 붙여서 반환함
+    return (
+      // const a와 b를 랜덤하게 붙여서 반환함
       a[Math.floor(Math.random() * a.length)] +
       b[Math.floor(Math.random() * b.length)]
     );
   };
-  
+
   // 닉네임 영역을 input으로 바꿔서 인라인 요소적으로 편집할 수 있도록 하는 함수
   const openEditor = () => {
     if (!greetingEl || editing) return; // 영역이 없거나, 편집 중이면 중복 실행 막
 
     // 현재 표시 중인 닉네임을 찾음
-    const nickSpan = greetingEl.querySelector("#nickname"); 
+    const nickSpan = greetingEl.querySelector("#nickname");
     if (!nickSpan) return; // 없으면 편집을 못 여니 종료
 
     // 편집 모드 전환
@@ -96,7 +97,7 @@ export const createNickname = ({ greetingEl, onChange } = {}) => {
       }
     });
   };
-  
+
   // 공개 API 반환, 이벤트 바인딩 함수, 편집 중 여부 알려주는 함수, 저장된 닉네임을 가져오는 함수
   return {
     bind,

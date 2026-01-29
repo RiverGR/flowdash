@@ -248,10 +248,10 @@ const createBoard = () => {
 
     // 내용 관련 라벨 및 텍스트 필드
     const contentField = el("label", { className: "field" });
-    contentField.append(el("span", { className: "label", text: "내용(옵션)" }));
+    contentField.append(el("span", { className: "label", text: "내용" }));
     const ta = el("textarea");
     ta.rows = 3;
-    ta.placeholder = "내용 입력(옵션)";
+    ta.placeholder = "내용 입력";
     ta.value = todo.content ?? "";
     contentField.append(ta);
 
@@ -458,7 +458,7 @@ function saveEdit(id, patch) {
 /* 렌더 */
 // 앱 전체 화면을 다시 만드는 함수(중요)
 function render() {
-  header.renderGreeting(); // 인삿말, 테마, 닉네임[ 등을 렌더
+  header.renderGreeting(); // 인삿말, 테마, 닉네임 등을 렌더
   dashboard.render(todos); // 대시보드 렌더
 
   // 현재 필터에 UI 입력값을 읽어서 객체로 만듦
