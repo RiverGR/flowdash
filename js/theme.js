@@ -3,7 +3,7 @@ export const createTheme = ({ themeBtn, onAfterThemeToggle } = {}) => {
   const KEY_THEME = "flowdash-theme"; // 로컬스토리지에서 테마 값을 저장할 때 사용할 Key
 
   // 저장된 테마를 가져오고 없으면 기본값 dark로 설정
-  const getTheme = () => localStorage.getItem(KEY_THEME) || "dark";
+  const getTheme = () => localStorage.getItem(KEY_THEME) || "light";
 
   // 테마의 값을 저장하고 화면에 즉시 반영하는 함수
   const setTheme = (theme) => {
@@ -13,7 +13,7 @@ export const createTheme = ({ themeBtn, onAfterThemeToggle } = {}) => {
 
   // 테마 버튼을 눌렀을 때 설정되는 값 설정(삼항 연산자 사용)
   // 현재 테마가 dark면 light로 아니면 기본값은 dark로 전환
-  const toggleTheme = () => setTheme(getTheme() === "dark" ? "light" : "dark");
+  const toggleTheme = () => setTheme(getTheme() === "light" ? "dark" : "light");
 
   // 테마 관련 이벤트를 연결하고 초기 테마를 적용하는 함수(dark 테마가 기본값)
   const bind = () => {
