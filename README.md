@@ -88,31 +88,32 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
     <td><b>이가람</b></td>
     <td><b>팀장(Coordinator)</b></td>
     <td>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Design</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Data</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Maintenance</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UI</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Project Manager</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Git</span>
-    </td>
+  <img alt="Design" src="https://img.shields.io/badge/Design-2b2f36?style=flat-square" />
+  <img alt="CSS" src="https://img.shields.io/badge/CSS-2b2f36?style=flat-square" />
+  <img alt="Data" src="https://img.shields.io/badge/Data-2b2f36?style=flat-square" />
+  <img alt="Maintenance" src="https://img.shields.io/badge/Maintenance-2b2f36?style=flat-square" />
+  <img alt="UI" src="https://img.shields.io/badge/UI-2b2f36?style=flat-square" />
+  <img alt="Project%20Manager" src="https://img.shields.io/badge/Project%20Manager-2b2f36?style=flat-square" />
+  <img alt="Git" src="https://img.shields.io/badge/Git-2b2f36?style=flat-square" />
+</td>
     <td> 디자인 협업 <br> 앱 구조, 상태 흐름, 부팅 중복 방지 관리</td>
     <td>
       <a href="https://github.com/RiverGR" style="text-decoration:none;">
         <img alt="GitHub RiverGR" src="https://img.shields.io/badge/GitHub-RiverGR-181717?style=flat-square&logo=github&logoColor=white" />
       </a>
     </td>
+
   </tr>
 
   <tr>
     <td><b>최은주</b></td>
     <td>팀원(Contributor)</td>
     <td>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UI</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Features</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">JS</span>
-    </td>
+  <img alt="CSS" src="https://img.shields.io/badge/CSS-2b2f36?style=flat-square" />
+  <img alt="UI" src="https://img.shields.io/badge/UI-2b2f36?style=flat-square" />
+  <img alt="Features" src="https://img.shields.io/badge/Features-2b2f36?style=flat-square" />
+  <img alt="JS" src="https://img.shields.io/badge/JS-2b2f36?style=flat-square" />
+</td>
     <td>디자인 협업<br> 할 일 추가, 필터, 대시보드 UI 및 기능 구현</td>
     <td>
       <a href="https://github.com/ejo-o" style="text-decoration:none;">
@@ -125,12 +126,12 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
     <td><b>한찬우</b></td>
     <td>팀원(Contributor)</td>
     <td>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">UX</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Theme</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">CSS</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">Maintenance</span>
-      <span style="display:inline-block; font-size:12px; line-height:1.2; padding:3px 8px; margin:2px 4px 2px 0; border-radius:9px; background:#2b2f36; color:#e5e7eb; white-space:nowrap;">JS</span>
-    </td>
+  <img alt="UX" src="https://img.shields.io/badge/UX-2b2f36?style=flat-square" />
+  <img alt="Theme" src="https://img.shields.io/badge/Theme-2b2f36?style=flat-square" />
+  <img alt="CSS" src="https://img.shields.io/badge/CSS-2b2f36?style=flat-square" />
+  <img alt="Maintenance" src="https://img.shields.io/badge/Maintenance-2b2f36?style=flat-square" />
+  <img alt="JS" src="https://img.shields.io/badge/JS-2b2f36?style=flat-square" />
+</td>
     <td>디자인 유지보수 <br> 닉네임, 인삿말, 테마 로직 구현 및 UI 보완</td>
     <td>
       <a href="https://github.com/cmd-obam" style="text-decoration:none;">
