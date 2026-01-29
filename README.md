@@ -1,11 +1,52 @@
+<div align="center">
+
 # 7조 7imeOut (팀명)
 
+**칸반 기반 태스크 관리 대시보드**
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/RiverGR/flowdash)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-222?style=flat-square&logo=githubpages&logoColor=white)](https://rivergr.github.io/flowdash/)
+
+</div>
+
 > 공통 과제: 칸반 기반 태스크 관리 대시보드  
-> 팀원: 이가람, 한찬우, 최은주
+> 팀원: 이가람, 한찬우, 최은주  
 > 저장소: [GitHub](https://github.com/RiverGR/flowdash)  
 > 배포: [GitHub Pages](https://rivergr.github.io/flowdash/)
 >
 > ---
+
+---
+
+## ✨ Quick Links
+
+- [7조 7imeOut (팀명)](#7조-7imeout-팀명)
+  - [✨ Quick Links](#-quick-links)
+  - [0. 프로젝트 개요 (간단 요약)](#0-프로젝트-개요-간단-요약)
+  - [🛠 Tech Stack](#-tech-stack)
+  - [1. 팀 구성 및 역할 분담 (Team \& Roles)](#1-팀-구성-및-역할-분담-team--roles)
+  - [👥 팀 구성 및 역할 분담](#-팀-구성-및-역할-분담)
+  - [2. 수행 절차 및 방법 (Process \& Strategy)](#2-수행-절차-및-방법-process--strategy)
+    - [2-1. 진행 순서](#2-1-진행-순서)
+    - [2-2. 협업](#2-2-협업)
+  - [3. 프로젝트 구조](#3-프로젝트-구조)
+    - [3-1. 디렉터리 구조](#3-1-디렉터리-구조)
+    - [3-2. 모듈 책임 분리](#3-2-모듈-책임-분리)
+    - [3-3 데이터 흐름](#3-3-데이터-흐름)
+  - [4. 핵심 설계 결정 사항 (Design Decisions)](#4-핵심-설계-결정-사항-design-decisions)
+  - [5. 수행 결과 (Implementation Result)](#5-수행-결과-implementation-result)
+    - [5-1. 구현 완료 기능](#5-1-구현-완료-기능)
+    - [5-2 요구사항 충족](#5-2-요구사항-충족)
+    - [5-2. 요구사항 충족 범위](#5-2-요구사항-충족-범위)
+  - [6. 트러블슈팅 (Troubleshooting)](#6-트러블슈팅-troubleshooting)
+  - [7. 자체 평가 및 회고 (Self Review)](#7-자체-평가-및-회고-self-review)
+    - [7-1. 잘한 점](#7-1-잘한-점)
+    - [7.2 아쉬운 점](#72-아쉬운-점)
+    - [7.3 다음에 개선 할 점](#73-다음에-개선-할-점)
+  - [8. 실행 방법](#8-실행-방법)
+  - [9. 결론](#9-결론)
+
+---
 
 ## 0. 프로젝트 개요 (간단 요약)
 
@@ -28,11 +69,17 @@ CRUD, 기간 필터, 통계, 테마 및 UX 요소를 포함하며
 
 ## 1. 팀 구성 및 역할 분담 (Team & Roles)
 
-| 이름   | 역할                                             | 주요 담당                                      | 비고                                    |
-| ------ | ------------------------------------------------ | ---------------------------------------------- | --------------------------------------- |
-| 이가람 | App Initialization / State Flow / JS Maintenance | 앱 구조, 상태 흐름, 부팅 중복 방지 관리        | 디자인 설계 및 협업 / 부팅 로직 설계    |
-| 최은주 | Feature UI / Interaction Design                  | 할 일 추가, 필터, 대시보드 UI 및 기능 구현     | 디자인 설계 및 협업 / UI 일부 기능 구현 |
-| 한찬우 | UX / Theme / CSS Maintenance                     | 닉네임, 인삿말, 테마 로직 기능 구현 및 UI 보완 | CSS 디테일 수정                         |
+<div align="center">
+
+## 👥 팀 구성 및 역할 분담
+
+| 이름   | 역할                                             | 주요 담당                                  | GitHub                                                                                                                                       |
+| ------ | ------------------------------------------------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| 이가람 | App Initialization / State Flow / JS Maintenance | 앱 구조, 상태 흐름, 부팅 중복 방지 관리    | [![GitHub](https://img.shields.io/badge/GitHub-RiverGR-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/RiverGR)    |
+| 최은주 | Feature UI / Interaction Design                  | 할 일 추가, 필터, 대시보드 UI 및 기능 구현 | [![GitHub](https://img.shields.io/badge/GitHub-ejo--o-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ejo-o)       |
+| 한찬우 | UX / Theme / CSS Maintenance                     | 닉네임, 인삿말, 테마 로직 구현 및 UI 보완  | [![GitHub](https://img.shields.io/badge/GitHub-cmd--obam-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/cmd-obam) |
+
+</div>
 
 - JavaScript는 전체적인 디자인을 설계한 후, 각각의 섹션 별로 기능을 구현하였습니다.
 - 각각의 역할 중에서도 할 수 있는 부분으로 역할을 분배하였습니다.
@@ -68,20 +115,20 @@ flowdash/
 ├─ README.md
 ├─ index.html
 ├─ css/
-│  ├─ base.css
-│  ├─ components.css
-│  ├─ layout.css
-│  └─ modal.css
+│ ├─ base.css
+│ ├─ components.css
+│ ├─ layout.css
+│ └─ modal.css
 └─ js/
-   ├─ app.js
-   ├─ add.js
-   ├─ dash.js
-   ├─ entry.js
-   ├─ filter.js
-   ├─ greeting.js
-   ├─ nickname.js
-   ├─ preload.js
-   ├─ theme.js
+├─ app.js
+├─ add.js
+├─ dash.js
+├─ entry.js
+├─ filter.js
+├─ greeting.js
+├─ nickname.js
+├─ preload.js
+├─ theme.js
 ```
 
 ---
@@ -160,33 +207,45 @@ flowdash/
 
 ## 6. 트러블슈팅 (Troubleshooting)
 
-### 6-1. 새로고침 시 할 일 추가 카드 섹션 깜빡임 현상
+<details>
+<summary><b>6-1. 새로고침 시 할 일 추가 카드 섹션 깜빡임 현상</b></summary>
 
 - **증상:** 새로고침과 창을 열고 닫을 때 할 일 추가 카드가 '접힘'상태라면 잠깐 펼쳐졌다가 접히는 현상 발생
 - **원인:** 접힘 상태가 JS 로딩 이후에 적용되는 것을 확인
 - **해결:** 렌더링 이전에 상태를 먼저 적용할 수 있게 `preload.js`로 적용
 - **회고:** UX 기능 문제는 구현이 되었다고 해도 반드시 한번 더 점검하여 애니메이션과 기능적으로 정말 문제가 없는지 다시 확인이 필요함을 인식하였습니다.
 
-### 6-2. 앱 중복 실행으로 인한 이벤트 문제
+</details>
+
+<details>
+<summary><b>6-2. 앱 중복 실행으로 인한 이벤트 문제</b></summary>
 
 - **증상:** 일부 이벤트 리스너(할 일이 2번 추가된다던가, 닉네임이 2개가 겹쳐서 나오는 현상)들이 중복적으로 발생
 - **원인:** 초기화 로직이 여러 경로로 실행이 될 수 있는 구조로 설계가 되었습니다.
 - **해결:** `entry.js` 파일을 생성, 파일 내에서 부팅을 예약과 실행을 분리하여서 초기화를 하였으며, 1회만 실행될 수 있도록 하였습니다.
 - **회고:** 초기화의 중요성과 중복 이벤트 발생의 치명적인 오류가 있음을 인식하였으며, `entry.js`와 같은 부팅 예약/실행의 기능의 중요성을 인지하였습니다.
 
-### 6-3. 필터 영역의 오류 발생
+</details>
+
+<details>
+<summary><b>6-3. 필터 영역의 오류 발생</b></summary>
 
 - **증상:** 검색 및 필터를 임의로 지정하였을 때, 중복으로 저장하면 검색과 필터가 아예 안되고 등록된 TODO 카드들이 나오지 않은 현상이 발생하였습니다.
 - **원인:** 필터 영역의 정의를 설정하지 않은 코드를 추가하여서 필터 영역에서 상태나 우선순위 선택을 같이 하였을 때 강제적으로 중단이 되었습니다.
 - **해결:** 오류가 나는 필터 부분이 필요한 부분이 아니였기에, 그 부분을 완전히 삭제하고 필터 로직을 다시 생성하였습니다.
 - **회고** 조건을 맞추기 위해서는 각각 모든 조건이 역할을 수행할 수 있도록 역할 지정이 필요하다는 것을 인지하였습니다.
 
-### 6-4. css 디자인 밀림 현상
+</details>
+
+<details>
+<summary><b>6-4. css 디자인 밀림 현상</b></summary>
 
 - **증상:** 필터 부분에 쉐브론 화살표가 영역 바깥으로 나가는 현상이 발생하였으며, 할 일 추가 카드 영역에 사용자 입력 칸을 클릭 시에 왼쪽 영역이 조금 잘리는 현상이 발생하였습니다. 추가적으로 TODO 카드의 편집 영역의 요소들이 오른쪽으로 밀리는 현상이 발생하였습니다.
 - **원인** 각각 오히려 디자인을 어긋나게 하는 margin과 padding, trenstion을 주었고, 편집 영역은 클래스 선택에 있어서 오류가 났기에 디자인 적용이 되지 않았습니다.
 - **해결** 디자인 적용을 잘못하게 하는 margin, padding, trenstion을 삭제하고, 전체적인 css 파일들의 클래스와 디자인을 재검토하였습니다.
 - **회고** JavaScript로 만든 기능 구현도 중요하지만, 사용자가 불편함을 느끼지 않도록 디자인 영역의 알맞은 배치의 중요성을 다시 한번 인지하였습니다.
+
+</details>
 
 ---
 
